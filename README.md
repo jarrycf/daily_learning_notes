@@ -1,6 +1,6 @@
 # 沈超凡的个人网站
 
-[jarrycf.top](jarrycf.top)
+[jarrycf.](jarrycf.top)github.io
 
 - 生成 [MkDocs](https://www.mkdocs.org)
 - 主题 [Material](https://github.com/squidfunk/mkdocs-material)

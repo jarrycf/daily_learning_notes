@@ -1,6 +1,6 @@
 # 你好
 
-这里是沈超凡的个人网站 [https://jarrycf.github.io/](https://jarrycf.github.io)
+这里是沈超凡的个人网站 [jarrycf.github.io/](jarrycf.github.io/)
 
 - 通过主题和目录以打开文章
   - PC端 在上方标签栏选择主题 在左侧目录选择文章

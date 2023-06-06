@@ -20,7 +20,9 @@ nav:
       - Git合作: LECTURE/Git/git-teamwork.md
       - Windows安装Git: LECTURE/Git/windows-install.md
     - 社团&讲座: 
-      - 如何科研: LECTURE/App/app-design.md
+      - 如何科研: LECTURE/App/how-research.md
+      - 文化布局宣讲: LECTURE/App/cultural-layout.md
+      - 文化布局宣讲: LECTURE/App/app-design.md
     - Flutter学习教程:
       - LECTURE/Flutter/221120-consideration.md
     - 在macOS上用VSCode写C++代码:
@@ -117,7 +119,7 @@ nav:
           - BLOG/Deeplearning/ddp-note.md
     - 其他:
       - BLOG/Others/video-info.md
-  - 笔记:
+  - AI:
     - DEV/index.md
     - App:
       - DEV/App/flutter-web-consideration.md
@@ -148,7 +150,7 @@ nav:
         - DEV/Programming/C/final.md
         - DEV/Programming/C/stdout-fflush.md
         - DEV/Programming/C/watch-matrix.md
-  - AI:
+  - 数学:
     - ESSAY/index.md
     - 随笔记:
       - ESSAY/Jottings/2305.md
@@ -235,13 +237,13 @@ nav:
       - ESSAY/Literature/poems.md
   - 技术栈:
     - 2/index.md
-    - 机器学习实训:
+    - 碱基编辑结果预测:
       - 2/Anime/anime-rating.md
       - 2/Anime/anime-rating-extraordinary.md
       - 2/Anime/anime-rating-great.md
       - 2/Anime/anime-rating-good.md
       - 2/Anime/new-anime-criterion.md
-    - 基于多种深度学习算法的碱基编辑结果预测:
+    - 其他:
       - 2/Sukina/pictures.md
       - 2/Sukina/kawaii.md
       - 2/Sukina/artists.md

@@ -12,9 +12,14 @@
 
 自我介绍：大家好，我是智能2111班的沈超凡，一年前我加入IT创客俱乐部, 今天由我我代表IT社来进行本月主题团日活动宣讲, 本月主题团日活动是
 
-![2023-06-06.201807](https://article.biliimg.com/bfs/article/6b1f225c3f8374a39990dc4e7892fc0539fea867.png)
+![img](https://article.biliimg.com/bfs/article/ba27a60ec3cdc945406e989acb8209dda42ee337.png)
+
+![img2](https://lgb1ternmf.feishu.cn/space/api/box/stream/download/asynccode/?code=NDM1YjE2YTgwZDAyMjY3ODA4YTVmNWViNDZmMzNmMTRfM0dpRjlET0V0cVhWd0FsN2psODEydzZ6NGNBY2dsZVRfVG9rZW46WGhGVGJ4cWU0bzlVamx4azZndmNBMXFwbmlzXzE2ODYwNTQ1ODU6MTY4NjA1ODE4NV9WNA)
+
+
 
 活动内容：
+
 1. 马克思主义中国化历程的回顾
 2. 十九大 五位一体文化布局
 3. 二十大文化布局 对比 十九大文化布局

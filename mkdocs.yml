@@ -8,21 +8,25 @@ site_description: 沈超凡的个人网站
 nav:
   - 讲稿:
     - LECTURE/index.md 
-    - 机器学习和深度学习:
+    # - 机器学习和深度学习:
+    - Linux:
       - Linux讲座: LECTURE/Linux/linux.md
       - 命令行入门精简版: LECTURE/Linux/commands-concise.md
-    - 计算机自然语言处理:
+    # - 计算机自然语言处理:
+    - Markfdown:
       - Markdown讲座: LECTURE/Markdown/markdown.md
       - VSCode及插件安装: LECTURE/Markdown/vscode-extension.md
-    - 计算机视觉与图像处理技术:
+    # - 计算机视觉与图像处理技术:
+    - git:
       - Git: LECTURE/Git/git.md
       - Git例子: LECTURE/Git/git-demos.md
       - Git合作: LECTURE/Git/git-teamwork.md
       - Windows安装Git: LECTURE/Git/windows-install.md
     - 社团&讲座: 
+      - 科技前沿分享会: LECTURE/App/how-research.md
       - 如何科研: LECTURE/App/how-research.md
       - 文化布局宣讲: LECTURE/App/cultural-layout.md
-      - 文化布局宣讲: LECTURE/App/app-design.md
+      - 创新讲座: LECTURE/App/app-design.md
     - Flutter学习教程:
       - LECTURE/Flutter/221120-consideration.md
     - 在macOS上用VSCode写C++代码:

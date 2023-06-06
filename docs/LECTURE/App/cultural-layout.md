@@ -2,7 +2,7 @@
 
 > 讲座时间：大二 (2022) 第十一周周六 (11.12) 晚上 19:00
 >
-> 面向群体：IT创客俱乐部的同学（需要思想分），其他同学（有共产主义理想, 正在学习马克思主义中国化最新成果）
+> 面向群体：IT创客俱乐部的同学（需要5思想分），其他同学（有共产主义理想, 想要了解马克思主义中国化最新成果）
 >
 > 作者：智能2111 [沈超凡](https://github.com/jarrycf/)
 >
@@ -12,13 +12,7 @@
 
 自我介绍：大家好，我是智能2111班的沈超凡，一年前我加入IT创客俱乐部, 今天由我我代表IT社来进行本月主题团日活动宣讲, 本月主题团日活动是
 
-![img](https://article.biliimg.com/bfs/article/ba27a60ec3cdc945406e989acb8209dda42ee337.png)
-
-
-
-![img2](https://article.biliimg.com/bfs/article/6b1f225c3f8374a39990dc4e7892fc0539fea867.png)
-
-
+![image-20230606222806616](https://cdn.jsdelivr.net/gh/jarrycf/ImageBed@main/image/image-20230606222806616.png)
 
 活动内容：
 

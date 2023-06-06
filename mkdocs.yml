@@ -24,9 +24,10 @@ nav:
       - Windows安装Git: LECTURE/Git/windows-install.md
     - 社团&讲座: 
       - 科技前沿分享会: LECTURE/App/how-research.md
-      - 如何科研: LECTURE/App/how-research.md
+      - 科研流程分享: LECTURE/App/how-research.md
       - 文化布局宣讲: LECTURE/App/cultural-layout.md
-      - 创新讲座: LECTURE/App/app-design.md
+      - 科技创新讲座: LECTURE/App/app-design.md
+      - 金点子答辩: LECTURE/App/app-design.md
     - Flutter学习教程:
       - LECTURE/Flutter/221120-consideration.md
     - 在macOS上用VSCode写C++代码:

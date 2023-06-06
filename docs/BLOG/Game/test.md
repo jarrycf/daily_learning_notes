@@ -7,7 +7,23 @@ $e_t = W_ex_t$(1)
 
 $E=mc$
 
-![img](https://lgb1ternmf.feishu.cn/space/api/box/stream/download/asynccode/?code=NGU1YWE4ZTc1NDcwYTUwYjc1NDljYWJiZTgxNjcwMTBfQ21vMjZJUDAwMHhubnhZd1J3ek5UazlRcXVqTUNsRFRfVG9rZW46VTZBZWI0SXFUb2tWWDR4SWpTMGNycktPbm5nXzE2ODU4NjEzNjA6MTY4NTg2NDk2MF9WNA)
+
+
+![img](https://lgb1ternmf.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjMxNjI4NjhlYjcyOTBlOTAzNGE0MmMyYjI3ZDVmMzBfZXVPTFBKZFBINmFONDRCYXFObVFGZDJBWTZ0SmwwSmZfVG9rZW46VTZBZWI0SXFUb2tWWDR4SWpTMGNycktPbm5nXzE2ODU5NDQ2MDE6MTY4NTk0ODIwMV9WNA)
+
+
+
+
+
+![img](https://article.biliimg.com/bfs/article/8e94221c7bf95e6b2d86340c92f3e731adfefa18.png)
+
+
+
+![img](https://article.biliimg.com/bfs/article/8e94221c7bf95e6b2d86340c92f3e731adfefa18.png)
+
+
+
+
 
 其中$W_{e} \in \mathbb{R}^{d_{e} \times K}, e_{t} \in \mathbb{R}^{d_{e}}$
 

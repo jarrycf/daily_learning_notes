@@ -8,18 +8,19 @@ site_description: 沈超凡的个人网站
 nav:
   - 讲稿:
     - LECTURE/index.md 
-    - Linux:
+    - 机器学习和深度学习:
       - Linux讲座: LECTURE/Linux/linux.md
       - 命令行入门精简版: LECTURE/Linux/commands-concise.md
-    - Markdown:
+    - 计算机自然语言处理:
       - Markdown讲座: LECTURE/Markdown/markdown.md
       - VSCode及插件安装: LECTURE/Markdown/vscode-extension.md
-    - Git:
+    - 计算机视觉与图像处理技术:
       - Git: LECTURE/Git/git.md
       - Git例子: LECTURE/Git/git-demos.md
       - Git合作: LECTURE/Git/git-teamwork.md
       - Windows安装Git: LECTURE/Git/windows-install.md
-    - 应用开发设计: LECTURE/App/app-design.md
+    - 社团&讲座: 
+      - 如何科研: LECTURE/App/app-design.md
     - Flutter学习教程:
       - LECTURE/Flutter/221120-consideration.md
     - 在macOS上用VSCode写C++代码:
@@ -39,6 +40,10 @@ nav:
   - 博客:
     - BLOG/index.md
     - BLOG/others.md
+    - 复习笔记:
+      - BLOG/note/nlp.md
+    - 课堂笔记:
+    - 脑科学:
     - CG:
       - BLOG/ComputerGraphics/cg-notes.md
       - BLOG/ComputerGraphics/games101.md
@@ -114,7 +119,7 @@ nav:
           - BLOG/Deeplearning/ddp-note.md
     - 其他:
       - BLOG/Others/video-info.md
-  - 开发:
+  - 笔记:
     - DEV/index.md
     - App:
       - DEV/App/flutter-web-consideration.md
@@ -145,7 +150,7 @@ nav:
         - DEV/Programming/C/final.md
         - DEV/Programming/C/stdout-fflush.md
         - DEV/Programming/C/watch-matrix.md
-  - 随笔:
+  - AI:
     - ESSAY/index.md
     - 随笔记:
       - ESSAY/Jottings/2305.md
@@ -230,21 +235,21 @@ nav:
     - 随笔:
       - ESSAY/Literature/proses.md
       - ESSAY/Literature/poems.md
-  - 二次元:
+  - 技术栈:
     - 2/index.md
-    - 番:
+    - 机器学习实训:
       - 2/Anime/anime-rating.md
       - 2/Anime/anime-rating-extraordinary.md
       - 2/Anime/anime-rating-great.md
       - 2/Anime/anime-rating-good.md
       - 2/Anime/new-anime-criterion.md
-    - 喜欢的:
+    - 基于多种深度学习算法的碱基编辑结果预测:
       - 2/Sukina/pictures.md
       - 2/Sukina/kawaii.md
       - 2/Sukina/artists.md
       - 2/Sukina/vtuber.md
       - 2/Sukina/voice.md
-    - Galgame:
+    - 画作:
       - 2/Galgame/ddlc.md
     - 原神:
       - 2/Games/Genshin/characters.md

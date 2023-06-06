@@ -6,7 +6,7 @@
 >
 > 作者：智能2111 [沈超凡](https://github.com/jarrycf/)
 >
-> 课程录屏 <https://space.bilibili.com/1352921332>
+> 课程录屏 [b站-南工院IT社](https://space.bilibili.com/1352921332)
 
 ## 开场
 

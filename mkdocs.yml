@@ -24,8 +24,7 @@ nav:
     - BLOG/index.md
     - BLOG/others.md
     - 复习笔记:
-      - BLOG/note/nlp.md
- 
+      - BLOG/note/nlp.md 
   - AI:
     - AI/index.md
     - App:

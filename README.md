@@ -1,5 +1,6 @@
 # 沈超凡的个人网站
 
+G
 
 - 生成 [MkDocs](https://www.mkdocs.org)
 - 主题 [Material](https://github.com/squidfunk/mkdocs-material)

@@ -16,17 +16,11 @@
 
 
 
-![img](/Users/jarrycf/Library/Mobile Documents/com~apple~CloudDocs/jarrycf.github.io/docs/LECTURE/App/media/(null)-20230607101213690.png)
+![image-20230607101759260](media/image-20230607101759260.png)
 
 
 
-![img](/Users/jarrycf/Library/Mobile Documents/com~apple~CloudDocs/jarrycf.github.io/docs/LECTURE/App/media/(null)-20230607101147752.png)
-
-
-
-![2023-06-07.094921](/Users/jarrycf/Library/Mobile Documents/com~apple~CloudDocs/jarrycf.github.io/docs/LECTURE/App/media/2023-06-07.094921.png)
-
-
+![img](media/(null)-20230607101831902.(null))
 
 
 

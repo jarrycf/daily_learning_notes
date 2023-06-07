@@ -7,22 +7,19 @@ site_description: 沈超凡的个人网站
 # [Navigtion]
 nav:
   - 讲稿:
-    - LECTURE/index.md 
+    - Lecture/index.md 
     - 机器学习和深度学习:
-      - 第一课: LECTURE/ML&DL/index.md
+      - 第一课: Lecture/ml&dl/index.md
     - 计算机自然语言处理:
-      - 第一课: 
+      - 第一课: Lecture/nlp/index.md
     - 计算机视觉与图像处理技术:
-      - Git: LECTURE/Git/git.md
-      - Git例子: LECTURE/Git/git-demos.md
-      - Git合作: LECTURE/Git/git-teamwork.md
-      - Windows安装Git: LECTURE/Git/windows-install.md
+      - 第一课: Lecture/cv/index.md
     - 社团&讲座: 
-      - 科技前沿分享会: LECTURE/App/how-research.md
-      - 科研流程分享: LECTURE/App/how-research.md
-      - 文化布局宣讲: LECTURE/App/cultural-layout.md
-      - 科技创新讲座: LECTURE/App/app-design.md
-      - 金点子答辩: LECTURE/App/app-design.md
+      - 科技前沿分享会: Lecture/lecture/index.md
+      - 科研流程分享: Lecture/lecture/how-research.md
+      - 文化布局宣讲: Lecture/lecture/cultural-layout.md
+      - 科技创新讲座: Lecture/App/index.md
+      - 金点子答辩: Lecture/lecture/index.md
 
   - 博客:
     - BLOG/index.md
@@ -128,7 +125,7 @@ nav:
         - DEV/Programming/Swift/notes-basic-grammars.md
         - DEV/Programming/Swift/notes-language-guide.md
         - DEV/Programming/Swift/notes-useful-foundation.md
-        - DEV/Programming/Swift/lecture-homework.md
+        - DEV/Programming/Swift/Lecture-homework.md
         - DEV/Programming/Swift/parallel-for.md
       - C:
         - DEV/Programming/C/review.md

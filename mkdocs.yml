@@ -211,13 +211,13 @@ nav:
       - MATH/Literature/proses.md
       - MATH/Literature/poems.md
   - 技术栈:
-
+    - STACK/index.md
   - 转载:
-    - Reproduce/index.md
-    - Reproduce/how-to-ask-questions-the-smart-way.md
-    - Reproduce/tim-cook-at-duke.md
-    - Reproduce/my-best-teacher.md
-    - Reproduce/kasi/watagumo.md
+    - PEPRODUCE/index.md
+    - PEPRODUCE/how-to-ask-questions-the-smart-way.md
+    - PEPRODUCE/tim-cook-at-duke.md
+    - PEPRODUCE/my-best-teacher.md
+    - PEPRODUCE/kasi/watagumo.md
   - 我:
     - ME/index.md
     - ME/cv-full.md

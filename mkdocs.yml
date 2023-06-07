@@ -8,16 +8,12 @@ site_description: 沈超凡的个人网站
 nav:
   - 讲稿:
     - LECTURE/index.md 
-    # - 机器学习和深度学习:
-    - Linux:
-      - Linux讲座: LECTURE/Linux/linux.md
-      - 命令行入门精简版: LECTURE/Linux/commands-concise.md
-    # - 计算机自然语言处理:
-    - Markfdown:
+    - 机器学习和深度学习:
+      - 第一课: LECTURE/ML&DL/index.md
+    - 计算机自然语言处理:
       - Markdown讲座: LECTURE/Markdown/markdown.md
       - VSCode及插件安装: LECTURE/Markdown/vscode-extension.md
-    # - 计算机视觉与图像处理技术:
-    - git:
+    - 计算机视觉与图像处理技术:
       - Git: LECTURE/Git/git.md
       - Git例子: LECTURE/Git/git-demos.md
       - Git合作: LECTURE/Git/git-teamwork.md
@@ -28,22 +24,7 @@ nav:
       - 文化布局宣讲: LECTURE/App/cultural-layout.md
       - 科技创新讲座: LECTURE/App/app-design.md
       - 金点子答辩: LECTURE/App/app-design.md
-    - Flutter学习教程:
-      - LECTURE/Flutter/221120-consideration.md
-    - 在macOS上用VSCode写C++代码:
-      - 0 介绍: LECTURE/vscode-cpp/0_about.md
-      - 1 前言和课程说明: LECTURE/vscode-cpp/1_前言和课程说明.md
-      - 2 认识macOS的文件系统: LECTURE/vscode-cpp/2_认识macOS的文件系统.md
-      - 3 认识程序: LECTURE/vscode-cpp/3_认识程序.md
-      - 4 认识终端和shell: LECTURE/vscode-cpp/4_认识终端和shell.md
-      - 5 开启VSCode的大门: LECTURE/vscode-cpp/5_开启VSCode的大门.md
-      - 6 VSCode代码运行自动化: LECTURE/vscode-cpp/6_VSCode代码运行自动化.md
-      - 7 用VSCode调试Cpp代码: LECTURE/vscode-cpp/7_用VSCode调试Cpp代码.md
-      - 8 课程回顾: LECTURE/vscode-cpp/8_课程回顾.md
-      - 其他: LECTURE/vscode-cpp/9_others.md
-      - 极速版: LECTURE/vscode-cpp/10_极速版.md
-      - 补充: LECTURE/vscode-cpp/11_补充.md
-    - 英语音标教学: LECTURE/English/phonetic-symbol.md
+
   - 博客:
     - BLOG/index.md
     - BLOG/others.md

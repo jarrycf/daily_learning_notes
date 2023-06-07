@@ -11,8 +11,7 @@ nav:
     - 机器学习和深度学习:
       - 第一课: LECTURE/ML&DL/index.md
     - 计算机自然语言处理:
-      - Markdown讲座: LECTURE/Markdown/markdown.md
-      - VSCode及插件安装: LECTURE/Markdown/vscode-extension.md
+      - 第一课: 
     - 计算机视觉与图像处理技术:
       - Git: LECTURE/Git/git.md
       - Git例子: LECTURE/Git/git-demos.md

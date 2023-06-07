@@ -7,99 +7,93 @@ site_description: 沈超凡的个人网站
 # [Navigtion]
 nav:
   - 讲稿:
-    - Lecture/index.md
+    - LECTURE/index.md
     - 机器学习和深度学习:
-      - 第一课: Lecture/ml&dl/index.md
+      - 第一课: LECTURE/ml&dl/index.md
     - 计算机自然语言处理:
-      - 第一课: Lecture/nlp/index.md
+      - 第一课: LECTURE/nlp/index.md
     - 计算机视觉与图像处理技术:
-      - 第一课: Lecture/cv/index.md
+      - 第一课: LECTURE/cv/index.md
     - 社团&讲座: 
-      - 科技前沿分享会: Lecture/lecture/index.md
-      - 科研流程分享: Lecture/lecture/how-research.md
-      - 文化布局宣讲: Lecture/lecture/cultural-layout.md
-      - 科技创新讲座: Lecture/lecture/index.md
-      - 金点子答辩: Lecture/lecture/index.md
+      - 科技前沿分享会: LECTURE/lecture/index.md
+      - 科研流程分享: LECTURE/lecture/how-research.md
+      - 文化布局宣讲: LECTURE/lecture/cultural-layout.md
+      - 科技创新讲座: LECTURE/lecture/index.md
+      - 金点子答辩: LECTURE/lecture/index.md
   - 博客:
-    - Blog/index.md
-    - Blog/others.md
+    - BLOG/index.md
+    - BLOG/others.md
     - 复习笔记:
-      - Blog/note/nlp.md
+      - BLOG/note/nlp.md
     - CG:
-      - Blog/ComputerGraphics/cg-notes.md
-      - Blog/ComputerGraphics/games101.md
-      - Blog/ComputerGraphics/blender-notes.md
+      - BLOG/ComputerGraphics/cg-notes.md
+      - BLOG/ComputerGraphics/games101.md
+      - BLOG/ComputerGraphics/blender-notes.md
     - 游戏:
-      - Blog/Game/unity-notes.md
-      - Blog/Game/ue-notes.md
-      - Blog/Game/what-is-game.md
-      - Blog/Game/2d-vs-3d.md
-      - Blog/Game/test.md
+      - BLOG/Game/unity-notes.md
+      - BLOG/Game/ue-notes.md
+      - BLOG/Game/what-is-game.md
+      - BLOG/Game/2d-vs-3d.md
+      - BLOG/Game/test.md
     - 日语:
-      - Blog/Japanese/notes-2202-2203.md
-      - Blog/Japanese/notes-2204.md
-      - Blog/Japanese/notes-2205.md
-      - Blog/Japanese/verb.md
-      - Blog/Japanese/adj.md
-      - Blog/Japanese/noun.md
-      - Blog/Japanese/grammar.md
-      - Blog/Japanese/essays.md
-      - Blog/Japanese/tantanmen-translation.md
-      - Blog/Japanese/chinese.md
+      - BLOG/Japanese/notes-2202-2203.md
+      - BLOG/Japanese/notes-2204.md
+      - BLOG/Japanese/notes-2205.md
+      - BLOG/Japanese/verb.md
+      - BLOG/Japanese/adj.md
+      - BLOG/Japanese/noun.md
+      - BLOG/Japanese/grammar.md
+      - BLOG/Japanese/essays.md
+      - BLOG/Japanese/tantanmen-translation.md
+      - BLOG/Japanese/chinese.md
     - OS:
-      - Blog/OS/fork-exec-spawn.md
-      - Blog/OS/fork-example.md
+      - BLOG/OS/fork-exec-spawn.md
+      - BLOG/OS/fork-example.md
     - Linux:
-      - Blog/Linux/vim.md
-      - Blog/Linux/tmux.md
-      - Blog/Linux/unix.md
-      - Blog/Linux/kernel-compile.md
-      - Blog/Linux/pi-start.md
+      - BLOG/Linux/vim.md
+      - BLOG/Linux/tmux.md
+      - BLOG/Linux/unix.md
+      - BLOG/Linux/kernel-compile.md
+      - BLOG/Linux/pi-start.md
     - macOS:
-      - Blog/macOS/tree.md
-      - Blog/macOS/zoom.md
-      - Blog/macOS/sharing-mac-android.md
-      - Blog/macOS/mad.md
-      - Blog/macOS/stream.md
+      - BLOG/macOS/tree.md
+      - BLOG/macOS/zoom.md
+      - BLOG/macOS/sharing-mac-android.md
+      - BLOG/macOS/mad.md
+      - BLOG/macOS/stream.md
     - 显示器:
-      - Blog//Display/sony-extend.md
+      - BLOG//Display/sony-extend.md
     - Apple:
-      - Blog/Apple/ipad-recommend.md
-      - Blog/Apple/mac-recommend.md
+      - BLOG/Apple/ipad-recommend.md
+      - BLOG/Apple/mac-recommend.md
     - GitHub:
-      - Blog/GitHub/mirror.md
+      - BLOG/GitHub/mirror.md
     - Markdown:
-      - Blog/Markdown/grammars.md
-      - Blog/Markdown/mkdocs-site.md
-      - Blog/Markdown/mdbook-site.md
-      - Blog/Markdown/github-pages.md
+      - BLOG/Markdown/grammars.md
+      - BLOG/Markdown/mkdocs-site.md
+      - BLOG/Markdown/mdbook-site.md
+      - BLOG/Markdown/github-pages.md
     - 电子工程:
-      - Blog/ElectronicEngineering/verilog-simulation.md
-      - Blog/ElectronicEngineering/storage.md
-      - Blog/ElectronicEngineering/rlc.md
-      - Blog/ElectronicEngineering/yosys-try.md
+      - BLOG/ElectronicEngineering/verilog-simulation.md
+      - BLOG/ElectronicEngineering/storage.md
+      - BLOG/ElectronicEngineering/rlc.md
+      - BLOG/ElectronicEngineering/yosys-try.md
     - 基础:
-      - 数学:
-        - Blog/Foundation/Math/latex.md
-        - Blog/Foundation/Math/linear.md
-        - Blog/Foundation/Math/taylor.md
-        - Blog/Foundation/Math/max-pr.md
-        - Blog/Foundation/Math/sympy-det.md
       - 物理:
-        - Blog/Foundation/Physics/guass-stokes.md
-        - Blog/Foundation/Physics/electromagnetics.md
+        - BLOG/Foundation/Physics/guass-stokes.md
+        - BLOG/Foundation/Physics/electromagnetics.md
       - 网络:
-        - Blog/Network/learning.md
-        - Blog/Network/nouns.md
+        - BLOG/Network/learning.md
+        - BLOG/Network/nouns.md
       - 机器学习:
-        - Blog/Deeplearning/d2l.md
-        - Blog/Deeplearning/speech-recognition.md
-        - Blog/Deeplearning/parallel-load.md
+        - BLOG/Deeplearning/d2l.md
+        - BLOG/Deeplearning/speech-recognition.md
+        - BLOG/Deeplearning/parallel-load.md
         - DDP:
-          - Blog/Deeplearning/ddp.md
-          - Blog/Deeplearning/ddp-note.md
+          - BLOG/Deeplearning/ddp.md
+          - BLOG/Deeplearning/ddp-note.md
     - 其他:
-      - Blog/Others/video-info.md
+      - BLOG/Others/video-info.md
   - AI:
     - AI/index.md
     - App:
@@ -124,7 +118,7 @@ nav:
         - AI/Programming/Swift/notes-basic-grammars.md
         - AI/Programming/Swift/notes-language-guide.md
         - AI/Programming/Swift/notes-useful-foundation.md
-        - AI/Programming/Swift/Lecture-homework.md
+        - AI/Programming/Swift/LECTURE-homework.md
         - AI/Programming/Swift/parallel-for.md
       - C:
         - AI/Programming/C/review.md
@@ -132,90 +126,90 @@ nav:
         - AI/Programming/C/stdout-fflush.md
         - AI/Programming/C/watch-matrix.md
   - 数学:
-    - Math/index.md
+    - MATH/index.md
     - 随笔记:
-      - Math/Jottings/2305.md
-      - Math/Jottings/2304.md
-      - Math/Jottings/2303.md
-      - Math/Jottings/2302.md
-      - Math/Jottings/2301.md
-      - Math/Jottings/2211-2212.md
-      - Math/Jottings/2209-2210.md
-      - Math/Jottings/2207-2208.md
-      - Math/Jottings/2205-2206.md
-      - Math/Jottings/2203-2204.md
-      - Math/Jottings/2201-2202.md
-      - Math/Jottings/2111-2112.md
-      - Math/Jottings/2109-2110.md
-      - Math/Jottings/2107-2108.md
-      - Math/Jottings/2105-2106.md
-      - Math/Jottings/2103-2104.md
-      - Math/Jottings/2101-2102.md
-      - Math/Jottings/2011-2012.md
-      - Math/Jottings/2009-2010.md
-      - Math/Jottings/2007-2008.md
-      - Math/Jottings/2005-2006.md
-      - Math/Jottings/2003-2004.md
-      - Math/Jottings/2001-2002.md
-      - Math/Jottings/0.md
-      - Math/Jottings/1906-1912.md
-      - Math/Jottings/1807-1812.md
-      - Math/Jottings/1801-1806.md
-      - Math/Jottings/17.md
-      - Math/Jottings/16.md
+      - MATH/Jottings/2305.md
+      - MATH/Jottings/2304.md
+      - MATH/Jottings/2303.md
+      - MATH/Jottings/2302.md
+      - MATH/Jottings/2301.md
+      - MATH/Jottings/2211-2212.md
+      - MATH/Jottings/2209-2210.md
+      - MATH/Jottings/2207-2208.md
+      - MATH/Jottings/2205-2206.md
+      - MATH/Jottings/2203-2204.md
+      - MATH/Jottings/2201-2202.md
+      - MATH/Jottings/2111-2112.md
+      - MATH/Jottings/2109-2110.md
+      - MATH/Jottings/2107-2108.md
+      - MATH/Jottings/2105-2106.md
+      - MATH/Jottings/2103-2104.md
+      - MATH/Jottings/2101-2102.md
+      - MATH/Jottings/2011-2012.md
+      - MATH/Jottings/2009-2010.md
+      - MATH/Jottings/2007-2008.md
+      - MATH/Jottings/2005-2006.md
+      - MATH/Jottings/2003-2004.md
+      - MATH/Jottings/2001-2002.md
+      - MATH/Jottings/0.md
+      - MATH/Jottings/1906-1912.md
+      - MATH/Jottings/1807-1812.md
+      - MATH/Jottings/1801-1806.md
+      - MATH/Jottings/17.md
+      - MATH/Jottings/16.md
     - 文章:
-      - Math/Articles/230403-buy-phone.md
-      - Math/Articles/230305-cccc-memory.md
-      - Math/Articles/221227-expressvpn-refund.md
-      - Math/Articles/220921-upgrade-introduction.md
-      - Math/Articles/220715-macbook-story.md
-      - Math/Articles/220624-gratitude.md
-      - Math/Articles/220621-bytedance-interview.md
-      - Math/Articles/220612-reply.md
-      - Math/Articles/2205-good-games.md
-      - Math/Articles/220506-stop-jianshu.md
-      - Math/Articles/220505-library-thu.md
-      - Math/Articles/220415-interestx2.md
-      - Math/Articles/220410-job-discussion.md
-      - Math/Articles/220410-independence.md
-      - Math/Articles/220408-appreciating-girl.md
-      - Math/Articles/220402-languages-comparision.md
-      - Math/Articles/220324-thoughts-996.md
-      - Math/Articles/220107-want-to-be.md
-      - Math/Articles/211104-emotion-bad.md
-      - Math/Articles/210928-apple-recruitment-share.md
-      - Math/Articles/2109-covid-influence.md
-      - Math/Articles/2109-group-clear.md
-      - Math/Articles/210820-cccc-event.md
-      - Math/Articles/210801-affection-3.md
-      - Math/Articles/210519-app-AI-experience.md
-      - Math/Articles/210516-apple-education-address.md
-      - Math/Articles/210502-extend-your-way.md
-      - Math/Articles/201119-a-new-review.md
-      - Math/Articles/200916-my-pursue.md
-      - Math/Articles/200713-sutuo-and-Myself.md
-      - Math/Articles/200703-talk-with-junior.md
-      - Math/Articles/200607-gaokao-memory.md
-      - Math/Articles/200604-small-goal.md
-      - Math/Articles/200602-tennkinoko.md
-      - Math/Articles/200506-why.md
-      - Math/Articles/2005-travel.md
-      - Math/Articles/190730-tangyan-rd-23.md
-      - Math/Articles/190723-feelings-in-6-days.md
-      - Math/Articles/190707-address-to-nonlocal-students.md
-      - Math/Articles/190629-affection-2.md
-      - Math/Articles/1905-non-intelligent.md
-      - Math/Articles/1901-go-to-thu.md
-      - Math/Articles/1811-do-it.md
-      - Math/Articles/1808-ideality-and-reality.md
-      - Math/Articles/1806-apply-thu.md
-      - Math/Articles/18-tree.md
-      - Math/Articles/18-what-i-love.md
-      - Math/Articles/17-dream-2017.md
-      - Math/Articles/14-affection-1.md
+      - MATH/Articles/230403-buy-phone.md
+      - MATH/Articles/230305-cccc-memory.md
+      - MATH/Articles/221227-expressvpn-refund.md
+      - MATH/Articles/220921-upgrade-introduction.md
+      - MATH/Articles/220715-macbook-story.md
+      - MATH/Articles/220624-gratitude.md
+      - MATH/Articles/220621-bytedance-interview.md
+      - MATH/Articles/220612-reply.md
+      - MATH/Articles/2205-good-games.md
+      - MATH/Articles/220506-stop-jianshu.md
+      - MATH/Articles/220505-library-thu.md
+      - MATH/Articles/220415-interestx2.md
+      - MATH/Articles/220410-job-discussion.md
+      - MATH/Articles/220410-independence.md
+      - MATH/Articles/220408-appreciating-girl.md
+      - MATH/Articles/220402-languages-comparision.md
+      - MATH/Articles/220324-thoughts-996.md
+      - MATH/Articles/220107-want-to-be.md
+      - MATH/Articles/211104-emotion-bad.md
+      - MATH/Articles/210928-apple-recruitment-share.md
+      - MATH/Articles/2109-covid-influence.md
+      - MATH/Articles/2109-group-clear.md
+      - MATH/Articles/210820-cccc-event.md
+      - MATH/Articles/210801-affection-3.md
+      - MATH/Articles/210519-app-AI-experience.md
+      - MATH/Articles/210516-apple-education-address.md
+      - MATH/Articles/210502-extend-your-way.md
+      - MATH/Articles/201119-a-new-review.md
+      - MATH/Articles/200916-my-pursue.md
+      - MATH/Articles/200713-sutuo-and-ME.md
+      - MATH/Articles/200703-talk-with-junior.md
+      - MATH/Articles/200607-gaokao-memory.md
+      - MATH/Articles/200604-small-goal.md
+      - MATH/Articles/200602-tennkinoko.md
+      - MATH/Articles/200506-why.md
+      - MATH/Articles/2005-travel.md
+      - MATH/Articles/190730-tangyan-rd-23.md
+      - MATH/Articles/190723-feelings-in-6-days.md
+      - MATH/Articles/190707-address-to-nonlocal-students.md
+      - MATH/Articles/190629-affection-2.md
+      - MATH/Articles/1905-non-intelligent.md
+      - MATH/Articles/1901-go-to-thu.md
+      - MATH/Articles/1811-do-it.md
+      - MATH/Articles/1808-ideality-and-reality.md
+      - MATH/Articles/1806-apply-thu.md
+      - MATH/Articles/18-tree.md
+      - MATH/Articles/18-what-i-love.md
+      - MATH/Articles/17-dream-2017.md
+      - MATH/Articles/14-affection-1.md
     - 随笔:
-      - Math/Literature/proses.md
-      - Math/Literature/poems.md
+      - MATH/Literature/proses.md
+      - MATH/Literature/poems.md
   - 技术栈:
 
   - 转载:
@@ -225,11 +219,11 @@ nav:
     - Reproduce/my-best-teacher.md
     - Reproduce/kasi/watagumo.md
   - 我:
-    - Myself/index.md
-    - Myself/cv-full.md
-    - Myself/suki.md
-    - Myself/create-family.md
-    - Myself/support.md
+    - ME/index.md
+    - ME/cv-full.md
+    - ME/suki.md
+    - ME/create-family.md
+    - ME/support.md
   - 网站:
     - WEBSITE/index.md # 访客打开网站第一个看到的是 docs/index.md（会报错 The following pages exist in the docs directory, but are not included in the "nav" configuration: index.md 不要紧）  如果访客之后想要重新看到这个界面  可以在 docs/WEBSITE/index.md 找到
     - WEBSITE/build.md
@@ -284,7 +278,7 @@ extra:
 # [Extensions]
 plugins:
   - search: # 现在还不支持中文搜索 支持之后可以设置语言
-    # insider已经支持中文的分词搜索了 https://squidfunk.github.io/mkdocs-material/Blog/2022/chinese-search-support/
+    # insider已经支持中文的分词搜索了 https://squidfunk.github.io/mkdocs-material/BLOG/2022/chinese-search-support/
       lang:
         - en
         - ja

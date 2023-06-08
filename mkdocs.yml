@@ -11,15 +11,15 @@ nav:
     - 机器学习和深度学习:
       - 第一课: LECTURE/ML&DL/index.md
     - 计算机自然语言处理:
-      - 第一课: LECTURE/nlp/index.md
-    - 计算机视觉与图像处理技术:
-      - 第一课: LECTURE/cv/index.md
+      - 第一课: LECTURE/NLP/index.mN
+    - 计算机视觉与图像处理技
+      - 第一课: LECTURE/CV/index.md
     - 社团&讲座: 
       - 科技前沿分享会: LECTURE/lecture/index.md
       - 科研流程分享:  LECTURE/lecture/how-research.md
       - 科研流程分享会: LECTURE/lecture/how-research.md
       - 文化布局宣讲: LECTURE/lecture/cultural-layout.md
-      - 科技创新讲座: LECTURE/lecture/index.md
+      - 科技创新讲座: LECTURE/lecture/index.in
       - 金点子答辩: LECTURE/lecture/index.md
   - 博客:
     - BLOG/index.md

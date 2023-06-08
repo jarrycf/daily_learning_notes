@@ -9,7 +9,7 @@ nav:
   - 讲稿:
     - LECTURE/index.md
     - 机器学习和深度学习:
-      - 第一课: LECTURE/ML&DL/index.md
+      - 第一课: LECTURE/ML/index.md
     - 计算机自然语言处理:
       - 第一课: LECTURE/NLP/index.md
     - 计算机视觉与图像处理技

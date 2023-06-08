@@ -1,6 +1,6 @@
 # [Info]
 site_name: 沈超凡的个人网站 # 左上角标题
-site_url: https://shen-chaofan.github.io
+site_url: https://jarrycf.github.io
 site_author: 沈超凡
 site_description: 沈超凡的个人网站
 
@@ -9,14 +9,15 @@ nav:
   - 讲稿:
     - LECTURE/index.md
     - 机器学习和深度学习:
-      - 第一课: LECTURE/ml&dl/index.md
+      - 第一课: LECTURE/ML&DL/index.md
     - 计算机自然语言处理:
       - 第一课: LECTURE/nlp/index.md
     - 计算机视觉与图像处理技术:
       - 第一课: LECTURE/cv/index.md
     - 社团&讲座: 
       - 科技前沿分享会: LECTURE/lecture/index.md
-      - 科研流程分享: LECTURE/lecture/how-research.md
+      - 科研流程分享:  LECTURE/lecture/how-research.md
+      - 科研流程分享会: LECTURE/lecture/how-research.md
       - 文化布局宣讲: LECTURE/lecture/cultural-layout.md
       - 科技创新讲座: LECTURE/lecture/index.md
       - 金点子答辩: LECTURE/lecture/index.md

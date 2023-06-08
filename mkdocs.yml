@@ -9,18 +9,18 @@ nav:
   - 讲稿:
     - LECTURE/index.md
     - 机器学习和深度学习:
-      - 第一课: LECTURE/ML/index.md
+      - 第一课: LECTURE/ML&DL/blank.md
     - 计算机自然语言处理:
-      - 第一课: LECTURE/NLP/index.md
-    - 计算机视觉与图像处理技
-      - 第一课: LECTURE/CV/index.md
+      - 第一课: LECTURE/NLP/blank.md
+    - 计算机视觉与图像处理技:
+      - 第一课: LECTURE/CV/blank.md
     - 社团&讲座: 
-      - 科技前沿分享会: LECTURE/lecture/index.md
+      - 科技前沿分享会: LECTURE/lecture/blank.md
       - 科研流程分享:  LECTURE/lecture/how-research.md
       - 科研流程分享会: LECTURE/lecture/how-research.md
       - 文化布局宣讲: LECTURE/lecture/cultural-layout.md
-      - 科技创新讲座: LECTURE/lecture/index.in
-      - 金点子答辩: LECTURE/lecture/index.md
+      - 科技创新讲座: LECTURE/lecture/blank.md
+      - 金点子答辩: LECTURE/lecture/blank.md
   - 博客:
     - BLOG/index.md
     - BLOG/others.md
@@ -30,33 +30,6 @@ nav:
     - AI/index.md
     - App:
       - AI/App/flutter-web-consideration.md
-    - Flutter:
-      - AI/Flutter/commands.md
-      - AI/Flutter/dart-lint.md
-      - AI/Flutter/template.md
-      - AI/Flutter/state-management.md
-    - React:
-      - AI/React/notes.md
-    - 编程:
-      - AI/Programming/recommendation.md
-      - AI/Programming/my-feelings.md
-      - Python:
-        - AI/Programming/Python/copy.md
-        - AI/Programming/Python/numpy-overview.md
-      - Dart:
-        - AI/Programming/Dart/learning.md
-      - Swift:
-        - AI/Programming/Swift/learning-resources.md
-        - AI/Programming/Swift/notes-basic-grammars.md
-        - AI/Programming/Swift/notes-language-guide.md
-        - AI/Programming/Swift/notes-useful-foundation.md
-        - AI/Programming/Swift/LECTURE-homework.md
-        - AI/Programming/Swift/parallel-for.md
-      - C:
-        - AI/Programming/C/review.md
-        - AI/Programming/C/final.md
-        - AI/Programming/C/stdout-fflush.md
-        - AI/Programming/C/watch-matrix.md
   - 数学:
     - MATH/index.md
     - 随笔记:

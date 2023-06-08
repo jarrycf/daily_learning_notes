@@ -10,10 +10,15 @@
 
 ## 仓库
 
-此网站的 Markdown源文件 存储在 [jarrycf / jarrycf.github.i](https://github.com/jarrycf/jarrycf.github.io/action)
+此网站的 Markdown源文件 存储在 [jarrycf / jarrycf.github.io](https://github.com/jarrycf/jarrycf.github.io/action)
 
 如果你希望提出一些建议，可以：
 
 - 在 [Issues](https://github.com/Yang-Xijie/yang-xijie.github.io/issues) 板块提出问题
 - 在 [Pull Requests](https://github.com/Yang-Xijie/yang-xijie.github.io/pulls) 板块修改源文件
 - 点击文章标题右侧的编辑按钮对文章进行修改
+
+
+## 注意
+
+

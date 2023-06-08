@@ -24,7 +24,7 @@ nav:
   - 博客:
     - BLOG/index.md
     - BLOG/others.md
-    - 复习笔记:
+    - 考前复习笔记:
       - BLOG/note/nlp.md 
   - AI:
     - AI/index.md
@@ -33,7 +33,7 @@ nav:
   - 数学:
     - MATH/index.md
     - 随笔记:
-      - MATH/Jottings/2305.md
+      - MATH/jottings/2305.md
   - 技术栈:
     - STACK/index.md
   - 转载:

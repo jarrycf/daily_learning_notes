@@ -8,6 +8,14 @@
 
 
 
+
+
+
+
+
+
+
+
 ## vscode
 
 1. vscode使用正则查找替换，替换的内容前要加$
@@ -30,7 +38,7 @@
 
 6. vscode能不能屏蔽插件更新提醒的徽章——不能
 
-
+7. vsode insiders版本无法安装leap插件，报错信息: code-insiders --install-extension vim-1.25.2.vsix --force Installing extensions... (node:95806) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead. (Use `Electron --trace-deprecation ...` to show where the warning was created) Extension 'vim-1.25.2.vsix' was successfully installed.
 
 
 
@@ -57,6 +65,10 @@ command+R， 关闭SIP：csrutil disable，sudo rm -rf xxx，关闭SIP后安装y
 
 
 mac 无法实现火绒的窗口屏蔽， 对于又有软件更新提醒的APP不太友好
+
+
+
+macOS 隐藏正在运行程序在Dock中的图标snippetsLab？
 
 
 

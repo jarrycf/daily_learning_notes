@@ -177,3 +177,35 @@ github提交次数的上限是多少?
 
 无
 
+
+
+
+
+# 开发
+
+
+
+node如何更新最新版？
+
+```python
+node -v
+sudo npm cache clean -f
+sudo npm install -g n	
+sudo n stable
+node -v
+sudo npm install npm@latest -g
+```
+
+
+
+mysql输入密码无法进入mysql
+
+[(46条消息) mac终端报错 ERROR 1045 (28000): Access denied for user ‘root‘@‘localhost‘ (using password: YES)_mac error 1045 (28000): access denied for user 'ro_从小白到能飞起来的博客-CSDN博客](https://blog.csdn.net/m0_62012366/article/details/120397253)
+
+[Mac M1 Mysql 的安装与配置_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV16L4y1b75R/?p=8)
+
+
+
+
+
+vue如何更新最新版

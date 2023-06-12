@@ -36,12 +36,13 @@ nav:
       - MATH/jottings/2305.md
   - 技术栈:
     - STACK/index.md
+    - STACK/base-edit-predict.md
   - 转载:
+    - PEPRODUCE/my-faith.md
     - PEPRODUCE/index.md
     - PEPRODUCE/how-to-ask-questions-the-smart-way.md
     - PEPRODUCE/tim-cook-at-duke.md
     - PEPRODUCE/my-best-teacher.md
-    - PEPRODUCE/kasi/watagumo.md
   - 我:
     - ME/index.md
     - ME/cv-full.md
@@ -94,7 +95,7 @@ extra:
   social: # icons
     - icon: fontawesome/brands/bilibili
       link: https://space.bilibili.com/1352921332
-      name: Bilibili | 镜像tru # 鼠标悬浮提示
+      name: Bilibili | jarrycf # 鼠标悬浮提示
     - icon: fontawesome/brands/github
       link: https://github.com/jarrycf
       name: GitHub | jarrycf

@@ -179,6 +179,14 @@ github提交次数的上限是多少?
 
 
 
+git 大小写修改无法提交怎么办
+
+```python
+git config core.ignorecase false
+```
+
+
+
 
 
 # 开发

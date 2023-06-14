@@ -23,12 +23,15 @@ nav:
   - 博客:
     - BLOG/index.md
     - BLOG/others.md
+    - BLOG/1900~2000.md
+    - BLOG/2001~2101.md
     - 考前复习笔记:
       - BLOG/note/nlp.md 
   - AI:
     - AI/index.md
-    - App:
-      - AI/App/flutter-web-consideration.md
+    - AI/2023.md
+    - AI/2022.md
+    - AI/2008.md
   - 数学:
     - MATH/index.md
     - 随笔记:

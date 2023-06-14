@@ -11,7 +11,7 @@ nav:
     - 机器学习和深度学习:
       - 第一课: LECTURE/ML&DL/blank.md
     - 计算机自然语言处理:
-      - 第一课: LECTURE/NLP/blank.md
+      - 智能问答: LECTURE/NLP/QA.md
     - 计算机视觉与图像处理技:
       - 第一课: LECTURE/CV/blank.md
     - 社团&讲座: 
@@ -27,6 +27,9 @@ nav:
     - BLOG/2001~2101.md
     - 考前复习笔记:
       - BLOG/note/nlp.md 
+    - 各路大佬:
+      - BLOG/dalao/github.md
+      - BLOG/dalao/zhihu.md
   - AI:
     - AI/index.md
     - AI/2023.md

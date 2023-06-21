@@ -11,6 +11,7 @@ nav:
     - 机器学习和深度学习:
       - 第一课: LECTURE/ML&DL/blank.md
     - 计算机自然语言处理:
+      - word2vec: LECTURE/NLP/word2vec.md
       - Transformer: LECTURE/NLP/Transformer.md
       - 智能问答: LECTURE/NLP/QA.md
     - 计算机视觉与图像处理技:

@@ -231,11 +231,11 @@ BOW有哪些问题?<br />无法衡量词的重要性:BOW给了每个词同等的
 
 使用jieba和sklearn计算下面3个句子的BOW模型的词向量, 使用TF-IDF作为特征, 只显示前10个特征值<br />text1 = "It is going to rain tomorrow tomorrow"<br />text2 = "Tomorrow I am not going outside"<br />text3 = "I am going to watch the premiere"
 
-#什么是语义信息<br />一个词的上下文是什么<br />eg.语义信息是指词与词之间的顺序和语法结构<br />The cat chased the mouse.<br />The mouse chased the cat.<br />顺序: The cat 得在 chased 前面<br />语法结构: 得符合主语+谓语+宾语结构
+$什么是语义信息<br />一个词的上下文是什么<br />eg.语义信息是指词与词之间的顺序和语法结构<br />The cat chased the mouse.<br />The mouse chased the cat.<br />顺序: The cat 得在 chased 前面<br />语法结构: 得符合主语+谓语+宾语结构
 
-#什么是正交?<br />a·b=0<br />有两个向量 (a1, a2) (b1, b2)<br />a1b1 + a2b2 = 0<br />向量点积dot product 为0
+$什么是正交?<br />a·b=0<br />有两个向量 (a1, a2) (b1, b2)<br />a1b1 + a2b2 = 0<br />向量点积dot product 为0
 
-#点积和内积有什么区别?<br />没有区别<br />同一个概念
+$点积和内积有什么区别?<br />没有区别<br />同一个概念
 
 如何解决词袋模型的2个问题<br />词嵌入<br />不能保留语义: 两个词语义越相关, 向量距离越相近<br />维度高和稀疏性: 将每个高低维向量空间的单词映射成一个个低维向量空间中的向量
 

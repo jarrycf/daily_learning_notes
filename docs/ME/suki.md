@@ -8,13 +8,12 @@
 ## 核心
 
 - MacBook / macOS
+- NLP
+  - RNN
+  - Transformer
 - 编程
-    - 语言：Python / Dart / C
-    - 前端：Flutter / React
-    - 后端：Django / FastAPI
+    - 语言：Python
+    - 前端：html+css
+    - 后端：Django
     - 算法：AI models
-- 日本語
-- 二次元のかわいい女の子
-    - 2D 绘画
-    - Live2D
-    - 3D 模型
+

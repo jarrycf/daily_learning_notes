@@ -1,0 +1,2519 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="沈超凡的个人网站">
+      
+      
+        <meta name="author" content="沈超凡">
+      
+      
+        <link rel="canonical" href="https://jarrycf.github.io/LECTURE/NLP/Transformer/">
+      
+      
+        <link rel="prev" href="../word2vec/">
+      
+      
+        <link rel="next" href="../QA/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+    
+    
+      
+        <title>Transformer - 沈超凡的个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="沈超凡的个人网站" class="md-header__button md-logo" aria-label="沈超凡的个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            沈超凡的个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Transformer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jarrycf/jarrycf.github.io/actions" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jarrycf.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        讲稿
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../BLOG/" class="md-tabs__link">
+        博客
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../AI/" class="md-tabs__link">
+        AI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../MATH/" class="md-tabs__link">
+        数学
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../STACK/" class="md-tabs__link">
+        技术栈
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../PEPRODUCE/my-faith/" class="md-tabs__link">
+        转载
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ME/" class="md-tabs__link">
+        我
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../WEBSITE/" class="md-tabs__link">
+        网站
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="沈超凡的个人网站" class="md-nav__button md-logo" aria-label="沈超凡的个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    沈超凡的个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jarrycf/jarrycf.github.io/actions" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jarrycf.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">讲稿</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          讲稿
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+          机器学习和深度学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          机器学习和深度学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML%26DL/blank/" class="md-nav__link">
+        第一课
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+          计算机自然语言处理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          计算机自然语言处理
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../word2vec/" class="md-nav__link">
+        word2vec
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Transformer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Transformer
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    直观认识
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    前提知识
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    数据预处理
+  </a>
+  
+    <nav class="md-nav" aria-label="数据预处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    建语表和编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    超参数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encoder" class="md-nav__link">
+    Encoder
+  </a>
+  
+    <nav class="md-nav" aria-label="Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    建表和查表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    位置编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-embedding-postional-encoding" class="md-nav__link">
+    input Embedding + Postional Encoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-k-v" class="md-nav__link">
+    计算出多头Q, K, V
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pad" class="md-nav__link">
+    生成pad的掩码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    缩放点积注意力
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-norm" class="md-nav__link">
+    Add &amp; Norm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    前馈神经网络
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decoder" class="md-nav__link">
+    Decoder
+  </a>
+  
+    <nav class="md-nav" aria-label="Decoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    生成多头注意力掩码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    重复部分
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    最后投影
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loss" class="md-nav__link">
+    计算loss
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    模型预测
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    代码整合
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    细节讲解
+  </a>
+  
+    <nav class="md-nav" aria-label="细节讲解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transformercnnrnn" class="md-nav__link">
+    Transformer相比CNN、RNN有什么优点？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    为什么要进行投影呢?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    为什么要分为不同的注意力头呢?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attention-attention" class="md-nav__link">
+    attention有加性和乘性, 为什么不用加性attention呢?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    为什么要除根号d?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token0" class="md-nav__link">
+    为什么不直接让要丢弃的token值直接赋值为0呢?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addnormal" class="md-nav__link">
+    为什么要进行这个Add&amp;normal这个操作?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalization-layernorm-batchnorm" class="md-nav__link">
+    normalization 的两种形式 LayerNorm 和 BatchNorm有什么区别?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    为什么我们不先归一化再做残差连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ffn" class="md-nav__link">
+    FFN中的激活函数该如何选择？
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    待完善细节
+  </a>
+  
+    <nav class="md-nav" aria-label="待完善细节">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    模型评估
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QA/" class="md-nav__link">
+        智能问答
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_4" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+          计算机视觉与图像处理技
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          计算机视觉与图像处理技
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CV/blank/" class="md-nav__link">
+        第一课
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_5" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+          社团&讲座
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          社团&讲座
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lecture/blank/" class="md-nav__link">
+        科技前沿分享会
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lecture/how-research/" class="md-nav__link">
+        科研流程分享会
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lecture/cultural-layout/" class="md-nav__link">
+        文化布局宣讲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lecture/blank/" class="md-nav__link">
+        科技创新讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lecture/blank/" class="md-nav__link">
+        金点子答辩
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../BLOG/">博客</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          博客
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/others/" class="md-nav__link">
+        其他博客链接
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/1900~2000/" class="md-nav__link">
+        1900~2000 回顾
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/2001~2101/" class="md-nav__link">
+        2001~2101年预测
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          考前复习笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          考前复习笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/note/nlp/" class="md-nav__link">
+        nlp复习笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/note/springboot/" class="md-nav__link">
+        nlp复习笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/note/data-structure/" class="md-nav__link">
+        nlp复习笔记
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          各路大佬
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          各路大佬
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/dalao/github/" class="md-nav__link">
+        github大佬
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/dalao/zhihu/" class="md-nav__link">
+        cv
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../AI/">AI</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          AI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/2023/" class="md-nav__link">
+        2023
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/2022/" class="md-nav__link">
+        2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/2008/" class="md-nav__link">
+        2008
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../MATH/">数学</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          数学
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          随笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          随笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATH/jottings/2305/" class="md-nav__link">
+        随笔记 | 2305
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../STACK/">技术栈</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          技术栈
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../STACK/base-edit-predict/" class="md-nav__link">
+        碱基编辑结果预测
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../PEPRODUCE/">转载</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          转载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PEPRODUCE/my-faith/" class="md-nav__link">
+        我的信仰
+      </a>
+    </li>
+  
+
+            
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PEPRODUCE/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        提问的智慧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PEPRODUCE/tim-cook-at-duke/" class="md-nav__link">
+        Tim Cook's Commencement Address at Duke University, 2018
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PEPRODUCE/my-best-teacher/" class="md-nav__link">
+        我最好的老师
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../ME/">我</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          我
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/cv-full/" class="md-nav__link">
+        个人履历
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/suki/" class="md-nav__link">
+        喜欢的事物
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/create-family/" class="md-nav__link">
+        组建家庭
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/support/" class="md-nav__link">
+        打赏支持
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../WEBSITE/">网站</a>
+          
+            <label for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          网站
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/build/" class="md-nav__link">
+        网站构建说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/help/" class="md-nav__link">
+        文章编写帮助
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/test/" class="md-nav__link">
+        网站功能测试
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    直观认识
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    前提知识
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    数据预处理
+  </a>
+  
+    <nav class="md-nav" aria-label="数据预处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    建语表和编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    超参数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encoder" class="md-nav__link">
+    Encoder
+  </a>
+  
+    <nav class="md-nav" aria-label="Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    建表和查表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    位置编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-embedding-postional-encoding" class="md-nav__link">
+    input Embedding + Postional Encoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-k-v" class="md-nav__link">
+    计算出多头Q, K, V
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pad" class="md-nav__link">
+    生成pad的掩码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    缩放点积注意力
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-norm" class="md-nav__link">
+    Add &amp; Norm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    前馈神经网络
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decoder" class="md-nav__link">
+    Decoder
+  </a>
+  
+    <nav class="md-nav" aria-label="Decoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    生成多头注意力掩码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    重复部分
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    最后投影
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loss" class="md-nav__link">
+    计算loss
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    模型预测
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    代码整合
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    细节讲解
+  </a>
+  
+    <nav class="md-nav" aria-label="细节讲解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transformercnnrnn" class="md-nav__link">
+    Transformer相比CNN、RNN有什么优点？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    为什么要进行投影呢?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    为什么要分为不同的注意力头呢?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attention-attention" class="md-nav__link">
+    attention有加性和乘性, 为什么不用加性attention呢?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    为什么要除根号d?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token0" class="md-nav__link">
+    为什么不直接让要丢弃的token值直接赋值为0呢?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addnormal" class="md-nav__link">
+    为什么要进行这个Add&amp;normal这个操作?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalization-layernorm-batchnorm" class="md-nav__link">
+    normalization 的两种形式 LayerNorm 和 BatchNorm有什么区别?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    为什么我们不先归一化再做残差连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ffn" class="md-nav__link">
+    FFN中的激活函数该如何选择？
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    待完善细节
+  </a>
+  
+    <nav class="md-nav" aria-label="待完善细节">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    模型评估
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+    <a href="https://github.com/jarrycf/jarrycf.github.io/actions/edit/main/docs/LECTURE/NLP/Transformer.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>Transformer</h1>
+
+<p><img alt="" src="../media/1687338097566-8ce95bba-4202-44c9-99df-29a2b0214596.png" /></p>
+<p><a name="qtJ5R"></a></p>
+<h2 id="_1">直观认识<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../media/1687338097563-aaad8c17-a2eb-4cc5-9f3d-05c6618bfaaa.png" /><br />结束符 词语接龙解码器<br />why do we work? 翻译成 为什么我们要工作?<br />S =&gt; 为<br />S为 =&gt; 什<br />S为什 =&gt; 么<br />...<br />S 为什么我们要工作? =&gt; E</p>
+<p>这个结构又和chatgpt有什么关系?</p>
+<p><img alt="" src="../media/1687338097656-3990153b-74ca-47c5-8f44-d56f379ccbeb.png" /><br />不再是S<br />为什么我们要工作? =&gt; 为<br />为什么我们要工作?为 =&gt; 了<br />为什么我们要工作?为了 =&gt; 实<br />....<br />为什么我们要工作?为了实现个人目标 =&gt; E<br />为了实现个人目标 </p>
+<p>这就是我们GPT的结构</p>
+<p><a name="dcuha"></a></p>
+<h2 id="_2">前提知识<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>seq2seq</li>
+<li>注意力机制</li>
+</ul>
+<p>seq2seq是解决什么问题的<br />机器翻译任务: <br />输入是一段英文，输出是一段中语，输入和输出皆不定长<br />eg. 英语 5：Why do we work ? 中文 8：我们为什么工作?<br />当输入输出序列都是不定长时，我们可以使用编码器 - 解码器（encoder-decoder）或者说 seq2seq。</p>
+<p>注意力机制是解决什么问题的?<br />输入序列 "Why do we work " 和输出序列 "我们为什么工作?"，<br />我们词的语接龙解码器是使用更多的 "we" 上下文向量来生成 "工作"这个想要的翻译结果，还是使用更多的 "work" 上下文向量来生成 "工作"。给每个词分配不同的注意力, 这就是注意力机制的由来.</p>
+<p>总结<br />Seq2Seq 模型中的编码器可以处理任意长度的输入序列，并生成一个固定长度的上下文向量。解码器可以根据上下文向量逐步生成输出序列，同时使用注意力机制来关注输入序列的不同部分。</p>
+<p><a name="v31vM"></a></p>
+<h2 id="_3">数据预处理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>德语翻译英文的任务来带大家通过pytorch实现一个300行的Transformer模型架构</p>
+<p>任务: <br />ich mochte ein bier 我喜欢喝啤酒</p>
+<p>ich mochte ein bier P =&gt; i want a beer . E<br />ich mochte ein cola P =&gt; i want a cola . E</p>
+<p><a name="SbNYF"></a></p>
+<h3 id="_4">建语表和编码<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338097646-b97fc5fb-6f74-44e5-9cbb-c9fc7776c6ed.png" /><br />我希望大家可以记住enc_input的维度是2*5<br /><img alt="" src="../media/1687338097630-67a8aa04-5fc3-48bd-9498-304deb5f6288.png" /></p>
+<div class="highlight"><pre><span></span><code>import math
+import torch
+import numpy as np
+import torch.nn as nn
+import torch.optim as optim
+import torch.utils.data as Data
+
+sentences = [
+        # enc_input           dec_input         dec_output
+        [&#39;ich mochte ein bier P&#39;, &#39;S i want a beer .&#39;, &#39;i want a beer . E&#39;],
+        [&#39;ich mochte ein cola P&#39;, &#39;S i want a coke .&#39;, &#39;i want a coke . E&#39;]
+]
+
+# Padding Should be Zero
+src_vocab = {&#39;P&#39; : 0, &#39;ich&#39; : 1, &#39;mochte&#39; : 2, &#39;ein&#39; : 3, &#39;bier&#39; : 4, &#39;cola&#39; : 5}
+src_idx2word = {src_vocab[key]: key for key in src_vocab}
+src_vocab_size = len(src_vocab) #6
+
+tgt_vocab = {&#39;P&#39; : 0, &#39;i&#39; : 1, &#39;want&#39; : 2, &#39;a&#39; : 3, &#39;beer&#39; : 4, &#39;coke&#39; : 5, &#39;S&#39; : 6, &#39;E&#39; : 7, &#39;.&#39; : 8}
+idx2word = {i: w for i, w in enumerate(tgt_vocab)}
+tgt_vocab_size = len(tgt_vocab) #9
+
+# src_len = 5 # enc_input max sequence length
+# tgt_len = 6 # dec_input(=dec_output) max sequence length
+src_len = len(sentences[0][0].split(&quot; &quot;)) # 5                                          
+tgt_len = len(sentences[0][1].split(&quot; &quot;)) # 6
+</code></pre></div>
+<p><img alt="" src="../media/1687338098213-b706254a-0589-4062-9ca7-addc6839186e.png" /></p>
+<p><a name="yDBqw"></a></p>
+<h3 id="_5">超参数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338098253-38489a2b-35c4-4bdb-9c9d-11ce4fe57def.png" /></p>
+<p><a name="AKBUU"></a></p>
+<h2 id="encoder">Encoder<a class="headerlink" href="#encoder" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../media/1687338098386-15c7dc33-8658-4f66-a585-73e34833bdd5.png" /></p>
+<p><a name="DodfM"></a></p>
+<h3 id="_6">建表和查表<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338098485-e67b32a7-c652-4ffb-a84d-9eadf8a12f41.png" /><br /><img alt="" src="../media/1687338098785-390e9bc8-0907-4608-a268-a65a552eb0fd.png" /></p>
+<p><img alt="" src="../media/1687338098748-92663cb5-3ba6-4f02-abc4-903a34f49313.png" /></p>
+<p><img alt="" src="../media/1687338098955-6e52bc7f-c877-46b7-8610-f29b796aba7f.png" /></p>
+<p>为什么需要进行位置编码?<br />因为Transformer不像RNN, RNN的结构觉得了必须有前一刻的输出, 才能进行下一时刻的输入, Transformer是并行输入的, 所以我们需要位置编码来表示序列的顺序这一特征</p>
+<p>序列的顺序特征是什么?<br />从北京到广州和从广州到北京只是把词的位置互换就表示了不同的意思.<br />也就是我们需要编码来表示每一个词的先后顺序<br />这就是位置编码</p>
+<p>那Transformer的位置编码是如何实现的呢?</p>
+<p><a name="LHhUR"></a></p>
+<h3 id="_7">位置编码<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338099055-f08a4245-ffb7-4a12-a5e5-de695af06beb.png" /></p>
+<p>这种位置编码的规律</p>
+<ol>
+<li>每一个行向量在位置编码表中都唯一, 且具体的值只受d_model(列)的影响, 不受行数的影响</li>
+<li>不管d_model取什么值, 每个行向量的变化趋势是固定的: 只有前一半的列数值变化剧烈</li>
+</ol>
+<p><img alt="" src="../media/1687338099361-5c0ef745-2123-42e5-8156-1213fe3fe819.png" /><img alt="" src="../media/1687338099386-a21da630-4f77-4ad2-b6a5-61dea83a6d57.png" /><br /><img alt="" src="../media/1687338099573-ef36f4ca-6cdc-456d-9e2c-a9cacaf177ca.png" /></p>
+<p>公式中i的取值范围是多少?<br /><img alt="" src="../media/1687338099706-bed82018-f11e-4a29-80fe-fe659d47f188.png" /></p>
+<p>公式如何在python中编码实现?<br /><img alt="" src="../media/1687338099856-077fe211-4ca3-472d-b2c4-9ba01479f1c8.png" /></p>
+<div class="arithmatex">\[PE{(pos,2i)} = \sin(pos / 10000^{2i/d_{\text{model}}}) \\ PE{(pos,2i+1)} = \cos(pos / 10000^{2i/d_{\text{model}}})\]</div>
+<div class="arithmatex">\[\text{torch.exp}(\text{torch.arange}(0, d_\text{model}, 2).float() \times \frac{-\ln(10000.0)}{d_\text{model}})\]</div>
+<p><img alt="" src="../media/1687338100095-a1cbb021-40d1-4e3e-89eb-12330c9bf45b.png" /></p>
+<p><a name="VC4q4"></a></p>
+<h3 id="input-embedding-postional-encoding">input Embedding + Postional Encoding<a class="headerlink" href="#input-embedding-postional-encoding" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338100120-98792d46-52e0-4b07-9084-f5fbc4bbb255.png" /></p>
+<p><img alt="" src="../media/1687338100549-4a5959b3-6f8f-4067-a19c-4245e30dc3ad.png" /></p>
+<p><img alt="" src="../media/1687338100647-875af1bf-a011-46de-8e44-8b49d53429f0.png" /></p>
+<p>什么是Self Attention?</p>
+<p><img alt="" src="../media/1687338100628-4452a9d9-c66f-464c-8632-ab010b76ef36.png" /></p>
+<p>X是如何衍生出Q, K, V的?<br />对X做了一个3个不同线性变换nn.linear 4 =&gt; 64 得到Q, K, V<br />3维张量进行输入 2<em>5</em>4 =&gt; 2<em>5</em>64<br />#d_k = d_v = 64 # dimension of K(=Q), V</p>
+<p><img alt="" src="../media/1687338101055-430b622d-a33b-4d63-93f4-f5d91631231d.png" /></p>
+<p><img alt="" src="../media/1687338101409-dd46b5cd-02cc-4c43-ad3b-2854b61b374d.png" /><br />Scaled Dot-Product Attention<br /><img alt="" src="../media/1687338101222-52691507-3980-4e5d-a228-0961118b63bd.png" /></p>
+<p>为什么需要除以根号dk?<br /># 将score的方差变小</p>
+<p>为什么要做注意力机制?<br />给定一个 X，通过Q, K, V相乘得到一个 context ，这个 context 就是对 X 的新的表征（词向量），Z 这个词向量相比较 X 拥有了句法特征(词性)和语义特征, 能够捕捉输入序列中的长距离依赖关系<br /><img alt="" src="../media/1687338101381-963ca326-efb2-49f9-baf7-d7c408680446.png" /></p>
+<p>什么是多头注意力机制?<br />Multi-Head Attention就是把X分成了8小块(H头), Scaled Dot-Product Attention的过程做8次，然后把8个输出Z合起来</p>
+<p><a name="qnYsF"></a></p>
+<h3 id="q-k-v">计算出多头Q, K, V<a class="headerlink" href="#q-k-v" title="Permanent link">&para;</a></h3>
+<p>将一个2x5x4的的张量， 经过 nn.linear 变为2<em>5</em>512的q, view 后又变为2x8x5x64, 这个升维的操作可以看作是将原先2x5x4的张量复制了8份还是分成了8小块?<br /><img alt="" src="../media/1687338101597-0058faa1-8ff5-4aea-953a-969c48c22fa0.png" /><br />分成了8小块</p>
+<p><a name="vBQdL"></a></p>
+<h3 id="pad">生成pad的掩码<a class="headerlink" href="#pad" title="Permanent link">&para;</a></h3>
+<p>为什么要生成pad的掩码?<br /><img alt="" src="../media/1687338101714-3aded52e-8327-42b3-b16b-c943d3c2f47d.png" /></p>
+<p><img alt="" src="../media/1687338101852-30eac0ac-653e-480e-997d-32af6cfc96ed.png" /></p>
+<p><a name="gAuU2"></a></p>
+<h3 id="_8">缩放点积注意力<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338102024-4abe0f9b-ac56-4a37-944e-02aa08b9800f.png" /></p>
+<p><img alt="" src="../media/1687338102029-aadd1a5b-8e9a-405f-8846-ea90e8ccc2f0.png" /></p>
+<p><img alt="" src="../media/1687338102487-387e8538-d0f0-45ae-8da3-e91fbad18ba8.png" /><br />图: Attention is All you Need<strong> 原论文</strong></p>
+<p><img alt="" src="../media/1687338102483-f4f3290a-c9d9-4e52-bbd6-fd7a761b75e0.png" /></p>
+<p><a name="WvddN"></a></p>
+<h3 id="add-norm">Add &amp; Norm<a class="headerlink" href="#add-norm" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338102798-311f48a4-62d4-40c0-8500-2f8d0eeebafb.png" /></p>
+<p><img alt="" src="../media/1687338102968-96f06741-3d2f-47ef-99eb-248bc3908f07.png" /></p>
+<p><a name="bd77p"></a></p>
+<h3 id="_9">前馈神经网络<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338102894-22df0e7b-82cf-4d00-8066-19c4a92e4847.png" /></p>
+<p>为什么要叫做前馈神经网络?<br />循环神经网络<br />卷积神经网络<br />生成对抗网络<br />自编码器<br />注意力机制<br />Feed Forward: 每个神经元接收上一层的输出，通过一定的权重和激活函数计算出自己的输出，并将其传递到下一层的神经元，这种单向传递的方式被称为“前馈”(Feed Forward)</p>
+<p><img alt="" src="../media/1687338103324-6f6951e5-c7b1-44c3-bded-f2d8dca92df2.png" /></p>
+<p><a name="jx5xO"></a></p>
+<h2 id="decoder">Decoder<a class="headerlink" href="#decoder" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../media/1687338103038-e4cad99b-ae25-47bf-b49d-c1654e5d7b3c.png" /></p>
+<p>为什么需要对未来时刻的信息进行掩码?<br /><img alt="" src="../media/1687338103471-50b957da-f37b-414d-8c19-dfe0b4bfa094.png" /><br />当我们输入am, 输出fine, 所以不能在QK相乘时提供fine的信息<br />为了防止模型在预测时使用后续单词的信息</p>
+<p><a name="igbuK"></a></p>
+<h3 id="_10">生成多头注意力掩码<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338103451-a45558c0-a48d-4419-bcef-4d8b73e51cb9.png" /></p>
+<p><img alt="" src="../media/1687338103619-37de3029-aecb-4418-9c05-65ff87c24fac.png" /></p>
+<p><a name="o4swK"></a></p>
+<h3 id="_11">重复部分<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338103589-c788f7e5-b25d-4ecf-a25e-92cdb45f5fea.png" /></p>
+<p><a name="NDkfd"></a></p>
+<h3 id="_12">最后投影<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338103792-0c0dea90-3db9-45ea-8aaf-3af5cfda4c75.png" /></p>
+<p><a name="a2qpF"></a></p>
+<h3 id="loss">计算loss<a class="headerlink" href="#loss" title="Permanent link">&para;</a></h3>
+<p>logits的含义是什么?<br />logits = log-odds <br />表示模型在第 i 个样本上对于第 j 个类别的得分</p>
+<p><img alt="" src="../media/1687338104269-9de407dd-cf6b-466c-80ad-f819063fb8f1.png" /><br />为什么预测值和目标值计算损失要转换成1维?<br />并不是转换成一维, 而是target要比input少一维<br />API是这么写的<br /><img alt="" src="../media/1687338104160-501a3a93-0843-46a0-b681-0b82b6de2382.png" /><br /><img alt="" src="../media/1687338104351-69125dd5-b555-41c8-8031-077b0dbdf3de.png" /><br />输入要batch_size放第一位, 放维度在第二位</p>
+<p><img alt="" src="../media/1687338104375-0a7e5aea-b555-4136-bb0d-1dab8f4503c8.png" /></p>
+<p><a name="HbS6t"></a></p>
+<h2 id="_13">模型预测<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>输入序列 "ich mochte ein bier p" <br />输出序列 "i want a beer . E"</p>
+<p><img alt="" src="../media/1687338104940-5366ccdf-d882-4e3e-9da1-f76cca5e6406.png" /></p>
+<p><a name="pHhj7"></a></p>
+<h2 id="_14">代码整合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p><a name="QYahe"></a></p>
+<h2 id="_15">细节讲解<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>Transformer相比CNN、RNN有什么优点？<br />为什么要进行投影呢?<br />为什么要分为不同的注意力头呢?<br />attention有加性和乘性, 为什么不用加性attention呢?<br />为什么要除根号d?<br />为什么不直接让要丢弃的token值直接赋值为0呢? <br />为什么要进行这个Add&amp;normal这个操作?<br />normalization 的两种形式 LayerNorm 和 BatchNorm有什么区别?<br />为什么我们不先归一化再做残差连接<br />FFN中的激活函数该如何选择？</p>
+<p><a name="nady3"></a></p>
+<h3 id="transformercnnrnn">Transformer相比CNN、RNN有什么优点？<a class="headerlink" href="#transformercnnrnn" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338105380-3678b237-935c-4567-9558-2a2c48d1d0b6.png" /></p>
+<p>transformer最先是在NLP任务中被广泛应用的, NLP任务需要编码去抽取很多的特征. <br />首先是每个词的上下文语义, 因为每个词的含义都和上下文强相关, 比如苹果这个词根据不同的语境, 既可能代表水果又可能代表品牌, 所以NLP的任务要求编码器可以抽取上下文的特征, 而上下文呢又分为方向和距离, RNN只能对句子进行单向的编码, CNN只能对短句进行编码, 而transformer既可以同时编码双向的语义, 又可以抽取长距离特征, 所以在上下文特征抽取方面,是强于RNN和CNN的. <br />NLP任务需要抽取的第二种特征是序列的顺序, 比如从北京到广州和从广州到北京这是把词的位置互换就表示了不同的意思, 虽然transformer具备位置编码能力, 不过个人实践下来短距离大家都差不多, 长距离下还是RNN略好, 但transformer在这方面还是优于CNN的.<br />最后是计算速度, RNN由于其自身的性质无法并行的处理序列, 而CNN和transformer都可以进行并行计算. transformer由于比较复杂, 比CNN要慢一些.<br />综合以上几点, transformer在效果和速度上都有一定的优势, 所以被广泛应用于各类任务中.<br />现在的RNN也可以进行双向编码.</p>
+<p>下面我会详细的带大家过一下Tansformer encoder中的3个重要模块<br />Multi-head Self-attention<br />Add&amp;LayerNorm<br />Feed Forward Network</p>
+<p><a name="xKWtQ"></a></p>
+<h3 id="_16">为什么要进行投影呢?<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338105212-003d0d7e-f66b-4ebc-9b2d-4c00d05b9dc3.png" /><br />在Transformer的源码中QKV的来源是相同的, 都来是X, 所以通常称其为QKV同源, 然后我们初始化3个不同的linear层来进行投影, 把输入特征的维度从d转为head*d_k, 其中head代表注意力头的数量, dk代表注意力头的尺寸. 那这里为什么进行投影呢?<br />因为如果不投影的话, 在之后的计算注意力时, 会直接让相同的q和v去做点积, 这样的计算结果就是attention矩阵的对角线分数非常高, 每个词的注意力都在自己身上, 而我们的初衷是想让每个词去融合上下文的语义, 所以需要把qkv投影到不同的空间中, 增加多样性, 之后就是最重要的attention计算</p>
+<p>注<br />当 Q 和 V 不同源, 但 K 和 V 同源 =&gt; 这就是交叉注意力机制</p>
+<p>为了不同注意力头的点积计算, 先把 q 和 k 矩阵转化成4维, 也就是batch_size 乘以注意力头的数量, 乘上 sequence length 再乘以注意力头的尺寸, 那么为什么要分为不同的注意力头呢?</p>
+<p><a name="pYKTS"></a></p>
+<h3 id="_17">为什么要分为不同的注意力头呢?<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338105169-9b8f6e4c-2d5b-42fe-9c05-3b2230b7aed3.png" /></p>
+<p><img alt="" src="../media/1687338106041-c5dd07c8-b752-4fe5-bb0a-82417937c0ec.png" /><br /><img alt="" src="../media/1687338105964-51649d65-554e-4ebc-b845-1219215f040a.png" /><br /><img alt="" src="../media/1687338106361-eac9a14c-888e-4f53-81ba-414237eb45ad.png" /><br /><img alt="" src="../media/1687338106483-bbbe6ad2-ac60-484e-89f0-86ed88d1f136.png" /><br /><img alt="" src="../media/1687338106816-753cd31f-6384-430e-be57-f9bc294c5ae1.png" /><br /><img alt="" src="../media/1687338106904-137b9e4e-c1bb-42cf-a08c-78d8dbb0105e.png" /></p>
+<p>说简单点: 这里其实和cnn里多通道的思想差不多, 希望不同的注意力头学到不同的特征.<br />说复杂点: 我们知道神经网络的本质是 y=𝜎(wx+b) 是对空间不断的进行非线性变换, 使空间中不同的词向量来到他们合适的位置, 我们以8头为例, 就是把 X 切分成 8 小块, 将原本一个位置上的 X，放到了空间上的 8 个位置进行训练, 这样可以使每个位置捕捉到不同特征, 再将这些不同的特征进行合并, 更好的捕捉到我们需要的特征. <br />如果从chatpgt的角度来理解不同的注意力头, 会解释的更复杂一些<br />Ai领域的神经元表面上看只是一个简单的线性变换叠加了一个非线性的激活函数. 但我们对他进行低维展开就是深度神经网络了, 只要隐藏层神经元足够多, 还有一种具备挤压性质的激活函数, 那么理论上足以表达整个宇宙空间, 这就是万能(通用)近似定理. 但单纯神经网络深度的增加, 并不能保证对网络行为的有效预测.<br />所以就有了卷积神经网络, 循环神经网络让我们初步具备了对神经元展开结构进行控制改造的能力, 但直到基于注意力机制的Transformer出现, 我们才具备了对微观结构进行大规模编程的能力, 自注意力机制计算序列数据之间的关联权重, 多头注意力机制捕获不同维度的特征信息, 随着transformer结构的不断叠加, 成百上千亿的参数进行更深层次的空间维度变换, 每个epoch的迭代训练,就如同电磁辐射一般, 对展开二维平面的逻辑电路进行蚀刻<br />chatgpt之所以影响深远, 就是因为它是人类历史上第一个将全网数据, 数千年文明都在高维空间进行了学习存储, 再在我们这个微观世界进行了浓缩和展示. chatgpt内部的高维结构来自于物理学上的M理论和超弦理论, 而这些理论的背后又是数学上的流行空间, 英文叫manifold, 它是空间的一种, 我们熟悉的三维空间是欧几里德空间, 除此之外还有希尔伯特空间, (巴拿赫空间, 内积空间, 赋范空间, 度量空间, 凸空间, 线性空间, 拓朴空间等等, 我们学过的svm支持向量机就是希尔伯特空间的变换,) 而我们的损失函数又与凸空间关系密切, 而最新的研究表明, 深度神经网络之所以有效, 根本原因在于它能够实现非线性流形空间的变换, 具体来说, 大家可能知道的张量分析, 本质上就是黎曼流形, 它既是一种特殊的manifold空间, 也是高维欧几里德空间的推广, 从这个意义上说, chatgpt只不过是通过低维展开, 实现了对高维复杂流体空间结构的一种编程能力, 而这里这里的多头注意力只不过是通过transformer结构的不断叠加的实现大规模编程的一种方式而已.<br />注<br />那有没有可能捕捉到起反作用的特征呢? 直觉告诉我是有可能的, 所以也不能用太多头</p>
+<p>我们回到代码上, 知道了为什么需要多头, 之后就是 q k 进行点积, 在点积时对k矩阵进行了转置, 计算后得到尺寸为batch_size 乘 注意力头的数量 乘 sequence length 再乘 sequence length 的注意力矩阵</p>
+<p><a name="nnTM2"></a></p>
+<h3 id="attention-attention">attention有加性和乘性, 为什么不用加性attention呢?<a class="headerlink" href="#attention-attention" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338107015-a69445e4-83e5-4d58-bfb9-67d1734a708c.png" /></p>
+<p>这里主要是考虑到在 gpu 场景下, 矩阵乘法的计算效率更高, 不过随着d的增大, 加性模型的效果会更好.<br />得到attention矩阵后, 又进行了一个操作, 就是除根号d, </p>
+<p><a name="vEEle"></a></p>
+<h3 id="d">为什么要除根号d?<a class="headerlink" href="#d" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338107121-2dc70ac8-b918-4062-9432-b3d2c9690c47.png" /></p>
+<p>这里主要是在做矩阵乘法时, 需要先让两个矩阵的元素相乘再相加, 如果两个矩阵都是服从正太分布的, 那相乘后就变成均值为0, 方差为d的分布了, 可能产生很大的数, 使得个别词的注意力很高, 其他词很低, 这样经过softmax后再求导会导致梯度很小, 不利于优化, 所以要除标准差根号d, 变回均值为0方差为1的正太分布, 稍微平滑一下</p>
+<p>除根号d之后就会加上mask矩阵, 大家可以看到mask矩阵是这样计算的, 我们将被mask的位置赋值为--1,000,000,000, 那</p>
+<p><a name="jDRh2"></a></p>
+<h3 id="token0">为什么不直接让要丢弃的token值直接赋值为0呢?<a class="headerlink" href="#token0" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338107563-25473b73-0495-4cdb-be3b-13b6b0f51edf.png" /><br />这里的token是指我们输入序列中的单词, 也就是这些位置</p>
+<p>大家可以回顾一下softmax的公式, 如果我们将要丢弃的token值直接赋值为0, 这个位置的概率就会是1, 因为公式的底数是e, 这样正常token的概率和就不等于1了, 同时无意义的token也会被注意到, 而如果我们将它变成很小的数比如-一亿, 最终概率值也可以趋于0了</p>
+<p>在之后就是进行softmax归一化得到最终的注意力分数, 用V矩阵和注意力分数进行加权, 再把不同的注意力头合并起来,<br />第二个重要模块是残差连接和normalisation, 先对 attention 的输出进行投影, 之后再加上原始输入, 再过一层layer norm </p>
+<p><a name="wjETI"></a></p>
+<h3 id="addnormal">为什么要进行这个Add&amp;normal这个操作?<a class="headerlink" href="#addnormal" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338107632-ca10e132-9724-4c6a-852b-81c8c0389d19.png" /></p>
+<p>先来说相加这个操作, 他主要是参考了残差连接, 相当于在求导时加了一个恒等项, 去减少梯度消失的问题, 然后是layer norm, normalization这个操作在神经网络里十分常见, 他们的主要目的是提升神经网络的泛化性, 大家都知道数据分布对神经网络有很大的影响, 比如在训练好的网络中, 我们输入一个跟之前分布不太一致的样本, 模型可能就会得到错误的结果, 但如果我们把中间的隐层都跳转到均值为0, 方差为1的分布去, 这样就能更好的利用模型在训练集中学到的知识, 同时 normalization 加在激活函数之前, 也能避免数据落入饱和区, 减少梯度消失的问题, 不过如果全都保持均值为零, 方差为1就降低了多样性, 所以实际操作时, 会初始化一个新的均值和方差, 把分布调整过去.</p>
+<p><a name="QVvV1"></a></p>
+<h3 id="normalization-layernorm-batchnorm">normalization 的两种形式 LayerNorm 和 BatchNorm有什么区别?<a class="headerlink" href="#normalization-layernorm-batchnorm" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338107989-662df146-4d14-4da4-ae43-14ea4c85a2cf.png" /><br />这里我来详细讲解一下, 首先我们看二维的矩阵, batch-norm的核心思想是给不同样本的用一个特征做归一化, 而layer-norm是给同一个样本的不同特征做归一化, 这个图应该很好理解, 那么我们继续拓展到三维空间, 加上序列长度其实还是一样的, batch-norm是从特征的维度去切一刀, 而layer-norm是从样本的维度去切一刀, 之所以在序列任务中更常用layernorm, 是因为序列数据的长度是不一样的. <br />这样就会导致batch-norm在针对不同样本的同一个位置去做归一化时, 无法得到真实分布的统计值, 而 layer-norm 就更适合, 体现在NLP任务里的就是layer-norm 会对同一个样本的每一个位置内的不同特征都做了归一化,我们可以来看看LayerNorm的源码, 首先对于每个样本的每个位置求得了一个均值, 同时初始化了新的beta和新的方差gamma, 把隐层映射到新的分布.<br />那么还有一个问题, 其实normalisation可以放在不同的位置, 为什么我们不先归一化再做残差连接<br /><img alt="" src="../media/1687338108396-e6915454-7ef9-47b2-beec-cd1983b6aef9.png" /></p>
+<p><a name="xGwB3"></a></p>
+<h3 id="_18">为什么我们不先归一化再做残差连接<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338108282-00d30102-cc9f-4007-9392-92e5f0820c59.png" /><br />我们目前使用的是post-layernorm, 也就是先做完残差连接再归一化, 这样可以保证主干网络的方差比较稳定, 使模型泛化能力更强, 但把恒等的路径放在normalisation里, 会导致模型更难收敛, 所以另一种做法是pre-normalisation, 也就是先归一化, 再做残差连接, 这样会更容易收敛, 但从递推公式的展开来看, 这个操作实际上只是增加了网络的宽度, 深度上并没有太大增加, 效果不如post-normalisation要好, <br />第三重要模块是FFN, 这个模块的操作比较简单, 从公式看就是经过了3次的变换, 线性, 非线性, 再线性, FFN的主要功能是给Transformer提供了非线性变换, 提升拟合能力, 这里有个问题, 就是FFN里激活函数的选择</p>
+<p><a name="noQCw"></a></p>
+<h3 id="ffn">FFN中的激活函数该如何选择？<a class="headerlink" href="#ffn" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338108308-7c8ba756-bd38-411a-8e6b-729f4841f60f.png" /></p>
+<p>最初的论文里使用的是Relu, 到BERT的论文时就改成了Gelu, 因为Gelu在激活函数中引入了正则的思想, 越小的值越有可能被丢弃, 相当于Relu 和 dropout 的一个综合, 而Relu则缺乏这个随机性, 且只有0和1, 另外为什么不用tanh和sigmoid呢?<br />因为这两个函数的双边区域会饱和, 导致导数趋于0, 有梯度消失的问题, 不利于双层网络的训练, </p>
+<p>附件内容<br /><img alt="" src="../media/1687338108632-b1fb3c82-188b-4991-a964-b3d426c716c4.png" /></p>
+<p><a name="AY7dm"></a></p>
+<h2 id="_19">待完善细节<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<p>到这里, 我们迭代实现了Transformer V1.0, 完成了可行性实验, 那么在下一个版本我们会优化哪些细节呢?</p>
+<p>位置编码的改进
+<a name="TGkps"></a></p>
+<h3 id="_20">模型评估<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../media/1687338109003-f369a436-cc67-4fbc-8b5d-ea5c3f82c748.png" /></p>
+<p><img alt="" src="../media/1687338108969-4da513da-1c47-45cc-ba17-fc4050f849ac.png" /><br /><img alt="" src="../media/1687338109146-fd5c0c11-991b-437c-ba6f-3175ac57f836.png" /></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      沈超凡 CC-BY-4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://space.bilibili.com/1352921332" target="_blank" rel="noopener" title="Bilibili | jarrycf" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/jarrycf" target="_blank" rel="noopener" title="GitHub | jarrycf" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../../../mkdocs/javascripts/mathjax.js"></script>
+        
+      
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+      
+        
+          <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+      
+    
+  </body>
+</html>

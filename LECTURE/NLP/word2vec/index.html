@@ -1,0 +1,2083 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="沈超凡的个人网站">
+      
+      
+        <meta name="author" content="沈超凡">
+      
+      
+        <link rel="canonical" href="https://jarrycf.github.io/LECTURE/NLP/word2vec/">
+      
+      
+        <link rel="prev" href="../../ML%26DL/blank/">
+      
+      
+        <link rel="next" href="../Transformer/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+    
+    
+      
+        <title>word2vec - 沈超凡的个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="沈超凡的个人网站" class="md-header__button md-logo" aria-label="沈超凡的个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            沈超凡的个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              word2vec
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jarrycf/jarrycf.github.io/actions" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jarrycf.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        讲稿
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../BLOG/" class="md-tabs__link">
+        博客
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../AI/" class="md-tabs__link">
+        AI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../MATH/" class="md-tabs__link">
+        数学
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../STACK/" class="md-tabs__link">
+        技术栈
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../PEPRODUCE/my-faith/" class="md-tabs__link">
+        转载
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ME/" class="md-tabs__link">
+        我
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../WEBSITE/" class="md-tabs__link">
+        网站
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="沈超凡的个人网站" class="md-nav__button md-logo" aria-label="沈超凡的个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    沈超凡的个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jarrycf/jarrycf.github.io/actions" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jarrycf.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">讲稿</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          讲稿
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+          机器学习和深度学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          机器学习和深度学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML%26DL/blank/" class="md-nav__link">
+        第一课
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+          计算机自然语言处理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          计算机自然语言处理
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          word2vec
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        word2vec
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    统计语言模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    神经网络语言模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    词向量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    词嵌入模型
+  </a>
+  
+    <nav class="md-nav" aria-label="词嵌入模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#word2voc" class="md-nav__link">
+    Word2Voc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Transformer/" class="md-nav__link">
+        Transformer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QA/" class="md-nav__link">
+        智能问答
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_4" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+          计算机视觉与图像处理技
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          计算机视觉与图像处理技
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CV/blank/" class="md-nav__link">
+        第一课
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_5" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+          社团&讲座
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          社团&讲座
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lecture/blank/" class="md-nav__link">
+        科技前沿分享会
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lecture/how-research/" class="md-nav__link">
+        科研流程分享会
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lecture/cultural-layout/" class="md-nav__link">
+        文化布局宣讲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lecture/blank/" class="md-nav__link">
+        科技创新讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lecture/blank/" class="md-nav__link">
+        金点子答辩
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../BLOG/">博客</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          博客
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/others/" class="md-nav__link">
+        其他博客链接
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/1900~2000/" class="md-nav__link">
+        1900~2000 回顾
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/2001~2101/" class="md-nav__link">
+        2001~2101年预测
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          考前复习笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          考前复习笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/note/nlp/" class="md-nav__link">
+        nlp复习笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/note/springboot/" class="md-nav__link">
+        nlp复习笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/note/data-structure/" class="md-nav__link">
+        nlp复习笔记
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          各路大佬
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          各路大佬
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/dalao/github/" class="md-nav__link">
+        github大佬
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/dalao/zhihu/" class="md-nav__link">
+        cv
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../AI/">AI</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          AI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/2023/" class="md-nav__link">
+        2023
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/2022/" class="md-nav__link">
+        2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/2008/" class="md-nav__link">
+        2008
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../MATH/">数学</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          数学
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          随笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          随笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATH/jottings/2305/" class="md-nav__link">
+        随笔记 | 2305
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../STACK/">技术栈</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          技术栈
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../STACK/base-edit-predict/" class="md-nav__link">
+        碱基编辑结果预测
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../PEPRODUCE/">转载</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          转载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PEPRODUCE/my-faith/" class="md-nav__link">
+        我的信仰
+      </a>
+    </li>
+  
+
+            
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PEPRODUCE/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        提问的智慧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PEPRODUCE/tim-cook-at-duke/" class="md-nav__link">
+        Tim Cook's Commencement Address at Duke University, 2018
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PEPRODUCE/my-best-teacher/" class="md-nav__link">
+        我最好的老师
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../ME/">我</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          我
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/cv-full/" class="md-nav__link">
+        个人履历
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/suki/" class="md-nav__link">
+        喜欢的事物
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/create-family/" class="md-nav__link">
+        组建家庭
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ME/support/" class="md-nav__link">
+        打赏支持
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../WEBSITE/">网站</a>
+          
+            <label for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          网站
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/build/" class="md-nav__link">
+        网站构建说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/help/" class="md-nav__link">
+        文章编写帮助
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WEBSITE/test/" class="md-nav__link">
+        网站功能测试
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    统计语言模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    神经网络语言模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    词向量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    词嵌入模型
+  </a>
+  
+    <nav class="md-nav" aria-label="词嵌入模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#word2voc" class="md-nav__link">
+    Word2Voc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+    <a href="https://github.com/jarrycf/jarrycf.github.io/actions/edit/main/docs/LECTURE/NLP/word2vec.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>word2vec</h1>
+
+<p><a name="DEPcd"></a></p>
+<h2 id="_1">统计语言模型<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>什么是语言模型?<br />用于解决两个语言任务的模型<br />预测一句话: “判断这个词的磁性” 和 “判断这个词的词性” 哪个句子出现的概率更大<br />预测一个词: "判断这个词的__" 接下来出现字典中哪个词的概率更大<br />共性: 都是分类任务</p>
+<p>解决上述两个问题的语言任务的模型有哪些?<br />统计语言模型<br />神经网络语言模型</p>
+<p>如何计算下面4句话中"的"后面为"词性"和"磁性"的哪个概率更大?<br />单词的词性<br />词性是名词<br />磁铁很强的磁性<br />电池的词性是名词<br />$$ P(词性|的) = \frac{count(词性, 的)}{count( 的)}  = \frac{2}{3}<span class="arithmatex">\(<span class="arithmatex">\(&lt;br /&gt;\)</span>\)</span>P(磁性|的) = \frac{count(磁性, 的)}{count( 的)}  = \frac{1}{3}$$<br />"的"后面为"词性"的概率更大</p>
+<p>统计语言模型是如何解决第一个问题的?<br />条件概率的链式法则<br />eg.<br />有一个包含 n 个句子的语料库, <br />“判断这个词的磁性” 和 “判断这个词的词性” 哪个句子出现的概率更大?<br /><span class="arithmatex">\(<span class="arithmatex">(P(这个|判断) = \frac{count(判断, 这个)}{count( 判断)} <span class="arithmatex">(<span class="arithmatex">\(&lt;br /&gt;\)</span>\)</span>P(w_1, w_2, ..., w_n) = \prod_{i=1}^{n} P{(wi|w1, w2, ..., w_{i-1})}\)</span>\)</span><br />选择联合概率更大的那个句子</p>
+<p>统计语言模型是如何解决第二个问题的?<br />条件概率<br />eg.<br />有一个包含 n 个句子 和 m个单词的字典, <br />"判断这个词的__" 接下来出现字典中哪个词的概率更大<br /><span class="arithmatex">\(<span class="arithmatex">\(P(w_{next}|w_1, w_2, ..., w_n) = \frac{count(w_{next}, 判断, 这, 词, 的)}{count(判断, 这个, 词, 的)} , 其中Wnext为遍历字典中的每一个词\)</span>\)</span><br />选择条件概率最大的那个词</p>
+<p>统计语言模型存在问题和解决方法?<br />问题: <br />字典长度非常大,当统计到词性这个词时<br />P(词性| “判断”，“这个”，“词”，“的”，……) =&gt; 时间和成本太高<br />解决:<br />n 元语言模型(n_gram模型): 有m个词, 只取n个词</p>
+<p>"计算下面4句话中"的"后面为"词性"或"磁性"的概率"这个任务用的是几元语言模型<br />2元<br />"的"后面: 2个词, 二元语言模型<br />"词的"后面: 3个词, 三元语言模型(trigram)</p>
+<p>如果所求的词是词库中没有的词, 出现零概率问题(0/0)的情况怎么办?<br />平滑策略<br />eg.<br />$$ P(w_{i}|w_{i-1}) = \frac{count(w_{i-1})+1}{count(w_{i-1})+|v|} $$<br />复杂的平滑策略: Laplace smoothing(拉普拉斯平滑), Lidstone...<br /><img alt="" src="../media/1687338190723-a13b5af9-af3f-4dc9-9543-a46fe75ec5a2.png" /><br />图1: <a href="http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf">A Neural Probabilistic Language Model(2003)</a> 原文</p>
+<p><a name="ksbSV"></a></p>
+<h2 id="_2">神经网络语言模型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>第一个解决了上述两个问题的神经网络语言模型是什么?<br />NNLM<br />神经网络模型: Neural Netword Language Model<br /><img alt="" src="../media/1687338190724-8cc6fb63-f1bf-4244-a4c4-00d27d630a68.png" /><img alt="" src="../media/1687338191050-bf23733e-6348-486f-af2c-a14cd9be6a71.png" /><br />图1: <a href="http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf">A Neural Probabilistic Language Model(2003)</a> 原图<br />图2: <a href="https://readpaper.com/paper/1614298861">Efficient Estimation of Word Representations in Vector Space(2013)</a> 原文</p>
+<p>NNLM是如何解决上述第两个问题的?<br />第一步: 将n-1个单词的索引转换为词向量<br />第二步: concat<br />X = [ x1, x2, x3, x4,... ,xn ]<br />第三步: 双层神经网络 + 残差网络<br /><span class="arithmatex">\(<span class="arithmatex">\(V\)</span>\)</span>=[ "判断", "这个", "词", "的", "词性" ]<br />第一层: tanh(H<em>X+d)<br />第二层: softmax ([tanh(H</em>X+d)]U + d+ WX) == [0.1, 0.2, 0.1, 0.3, 0.4] <span class="arithmatex">\(<span class="arithmatex">\(\in[1, V_L]\)</span>\)</span></p>
+<p>回顾一个双层神经网络的训练流程?<br /><img alt="" src="../media/1687338190703-20d47ba7-cc91-4259-8bf3-e1fef519a6a4.png" /></p>
+<p>根据上面步骤手写NNLM的编码流程, 用以下面3句子作为训练数据, 输入i like, 输出dog. <br />sentences = ["i like dog", "i love coffee", "i hate milk"]<br /><img alt="" src="../media/1687338190672-b9717078-8e61-4585-b483-fdecd45e15b8.png" /></p>
+<p>通过pytorch构建一个NNLM, 用以下面3句子作为训练数据, 输入i like, 输出dog. <br />尝试输入like love查看输出结果<br />sentences = ["i like dog", "i love coffee", "i hate milk"]</p>
+<div class="highlight"><pre><span></span><code># code by jarrycf @niit
+
+&#39;&#39;&#39;
+输出:
+[[0, 6], [0, 3], [0, 1]]
+1000 0.014071048237383366
+1000 0.006654839031398296
+[&#39;dog&#39;, &#39;coffee&#39;, &#39;milk&#39;]
+[&#39;coffee&#39;]
+&#39;&#39;&#39;
+
+import torch
+import torch.nn as nn
+import torch.optim as optimizer
+import torch.utils.data as Data
+
+dtype = torch.FloatTensor
+
+# 1. 构建词汇表
+sentences = [&quot;i like dog&quot;, &quot;i love coffee&quot;, &quot;i hate milk&quot;]
+# [&#39;i&#39;, &#39;like&#39;, &#39;dog&#39;, &#39;i&#39;, &#39;love&#39;, &#39;coffee&#39;,...]
+sentences_list = &quot; &quot;.join(sentences).split()
+vocab = list(set(sentences_list))
+word2idx = {w: i for i, w in enumerate(vocab)}
+&#39;&#39;&#39;
+{
+&#39;i&#39;: 0
+&#39;like&#39;: 1
+&#39;dog&#39;: 2
+&#39;love&#39;: 3
+&#39;coffee&#39;: 4
+&#39;hate&#39;: 5
+&#39;milk&#39;: 6
+}
+&#39;&#39;&#39;
+idx2word = {i: w for i, w in enumerate(vocab)}
+
+V = len(vocab)
+
+# 2. 确定X, Y
+
+def make_data(sentences):
+    input_data = []
+    target_data = []
+    # sentences = [&quot;i like dog&quot;, &quot;i love coffee&quot;, &quot;i hate milk&quot;]
+    for sen in sentences:
+        sen = sen.split()  # [&#39;i&#39;, &#39;like&#39;, &#39;dog&#39;]
+        input_tmp = [word2idx[w] for w in sen[:-1]]  # [[0, 1]]
+        target_tmp = word2idx[sen[-1]]  # [2]
+
+        input_data.append(input_tmp)
+        target_data.append(target_tmp)
+    return input_data, target_data
+
+input_data, target_data = make_data(sentences)
+print(input_data)
+input_data, target_data = torch.LongTensor(
+    input_data), torch.LongTensor(target_data)
+
+# 3. dataset
+dataset = Data.TensorDataset(input_data, target_data)
+
+# 4. dataload
+loader = Data.DataLoader(dataset, 2, True)
+
+# 5. 定义网络结构
+# parameter
+m = 2
+n_step = 2
+n_hidden = 10
+
+class NNLM(nn.Module):
+
+    def __init__(self):
+        &#39;&#39;&#39;
+        V：词汇表的大小，即语料库中去重后的单词个数
+        m：词向量的维度，一般大于50
+        H：隐藏层的weight
+        d：隐藏层的bias
+        U：输出层的weight
+        b：输出层的bias
+        W：输入层到输出层的weight
+        h：隐藏层神经元个数
+        &#39;&#39;&#39;
+        super(NNLM, self).__init__()
+        self.C = nn.Embedding(V, m)
+        # nn.Paramete默认参数requires_grad=True, 在方向传播中自动计算梯度
+        self.H = nn.Parameter(torch.randn(n_step * m, n_hidden).type(dtype))
+        self.d = nn.Parameter(torch.randn(n_hidden).type(dtype))
+        self.b = nn.Parameter(torch.randn(V).type(dtype))
+        self.W = nn.Parameter(torch.randn(n_step * m, V).type(dtype))
+        self.U = nn.Parameter(torch.randn(n_hidden, V).type(dtype))
+
+    def forward(self, X):
+        &#39;&#39;&#39;
+        X : [barch_size, n_step]
+        &#39;&#39;&#39;
+        X = self.C(X)  # [batch_size, n_step, m]
+        X = X.view(-1, n_step * m)  # [batch_size, n_step * m]
+        # 隐藏层: tanh(XH+d)
+        hidden_out = torch.tanh(torch.mm(X, self.H) + self.d)
+        # 输出层: softmax (hidden * U + d + XW)
+        output = torch.mm(hidden_out, self.U) + self.b + torch.mm(X, self.W)
+        return output
+
+model = NNLM()
+optim = optimizer.Adam(model.parameters(), lr=1e-3)
+criterion = nn.CrossEntropyLoss()
+
+# 6. 模型训练
+for epoch in range(1000):
+    for batch_x, batch_y in loader:
+        pred = model(batch_x)
+        loss = criterion(pred, batch_y)
+
+        if (epoch + 1) % 1000 == 0:
+            print(epoch + 1, loss.item())
+        optim.zero_grad()
+        loss.backward()
+        optim.step()  # 根据当前的参数梯度信息，更新模型中的参数
+
+# 7. 模型预测
+pred = model(input_data).max(1, keepdim=True)[1]
+print([idx2word[idx.item()] for idx in pred.squeeze()])
+
+&#39;&#39;&#39;
+预测结果过程
+=&gt; model(input_data)
+tensor([[-5.2228, -0.6685, -1.4815, -3.3014, -0.9889,  4.8275, -1.3545],
+        [-3.3357,  5.4271, -2.5973, -2.6110,  0.9228, -1.4809, -1.7979],
+        [-8.5480, -1.6075, -3.1393, -4.1746,  3.1858, -3.8107, -2.6344]],
+=&gt; .max(1)
+(values = tensor([5.7182, 5.4525, 4.1372], indices=tensor([2, 1, 4]))
+=&gt; keepdim = True
+(values = tensor([[5.7182], [5.4525], [4.1372]], indices=tensor([2], [1], [4]]))
+=&gt; [1] 
+tensor([2], [1], [4]])
+=&gt; .squeeze()
+tensor([2, 1, 4]) 
+=&gt; for idx in tensor([2, 1, 4]) 
+&lt;generator object &lt;genexpr&gt; at 0x10afc9b60&gt; # tensor(2) 
+=&gt; .item(tensor(2))
+2
+=&gt; idx2word[2]
+[&#39;dog&#39;]
+&#39;&#39;&#39;
+
+# 尝试输入like love查看输出结果
+input_data = [&quot;like&quot;, &quot;love&quot;]
+input_data = [word2idx[w] for w in input_data]  # [[0, 1]]
+input_data = torch.LongTensor(input_data)
+
+pred = model(input_data).max(1, keepdim=True)[1]
+print([idx2word[idx.item()] for idx in pred])
+</code></pre></div>
+<p>通过 pytorch 实现的 NNLM 和原论文中的 NNLM 有哪些异同点?<br />不同点:</p>
+<ol>
+<li>训练数据的构造方式不同：原论文中的 NNLM 是基于 n-gram 模型构造的训练数据，而这段代码中的 NNLM 是基于句子构造的训练数据。</li>
+<li>输入层的构造方式不同：原论文中的 NNLM 使用的是词袋模型（bag-of-words）对输入层进行编码，而这段代码中的 NNLM 使用的是词嵌入（word embedding）对输入层进行编码 原论文采用的是传统的基于矩阵乘法的词嵌入方法, 也被称为全连接层方法. 在这个方法中每个单词都被表示为一个 one-hot 向量，随机初始化一个权重矩阵，将 one-hot 向量乘以权重矩阵得到单词的词向量表示 我们采用的是PyTorch 中的 nn.Embedding 使用的是基于查表的词嵌入方法，也被称为嵌入层方法. 在这个方法中，每个单词都被映射为一个固定维度的向量，这个向量可以通过训练神经网络来得到，也可以使用预训练好的词向量</li>
+<li>隐藏层的激活函数不同：原论文中的 NNLM 使用的是 sigmoid 函数作为隐藏层的激活函数，而这段代码中的 NNLM 使用的是双曲正切函数（tanh）作为隐藏层的激活函数</li>
+<li>输出层的构造方式不同：原论文中的 NNLM 使用的是基于类别的 softmax 函数对输出层进行预测，而这段代码中的 NNLM 使用的是基于词的 softmax 函数对输出层进行预测。</li>
+<li>损失函数有点不同</li>
+</ol>
+<p>原论文的交叉熵还加上了正则<br />$$ \text{CE}(\mathbf{y}, \hat{\mathbf{y}}) = -\sum_{i=1}^{V} y_i \log(\hat{y}_i) <span class="arithmatex">\(<span class="arithmatex">\(&lt;br /&gt;![](media/1687338191358-30a8ece9-958e-4db3-a9e3-92a0ff2d5312.png)&lt;br /&gt;PyTorch 中的交叉熵&lt;br /&gt;\)</span>\)</span> \text{CE}(\mathbf{y}, \hat{\mathbf{y}}) = -\log \left(\frac{\exp(\hat{y}j)}{\sum{i=1}^{V} \exp(\hat{y}_i)}\right) $$$$ \text{CE}(\mathbf{y}, \hat{\mathbf{y}}) = -\log \left(\frac{\exp(\hat{y}j)}{\sum{i=1}^{V} \exp(\hat{y}_i)}\right) $$$$ \text{CE}(\mathbf{y}, \hat{\mathbf{y}}) = -\log \left(\frac{\exp(\hat{y}j)}{\sum{i=1}^{V} \exp(\hat{y}_i)}\right) $$其中， $$j $$是真实标签的索引值, <span class="arithmatex">\(<span class="arithmatex">\(\hat{\mathbf{y}}\)</span>\)</span>是模型预测的概率分布<br />但都是用来计算模型预测概率分布与真实标签概率分布之间的差异, 可以互换<br />共同点:<br />都实现了第下一个单词的预测</p>
+<p>下面论文中公式的具体含义是什么?<br /><img alt="" src="../media/1687338191380-0d6e2bc0-ed1a-4d82-b395-95cc678ebf2c.png" /><br /><img alt="" src="../media/1687338191658-a46bf5eb-e70e-4575-ac82-e13e1cebb02d.png" /></p>
+<p><a name="miLew"></a></p>
+<h2 id="_3">词向量<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>通过词嵌入模型生成词向量的方法是怎么来的?<br />NNLM在解决语言模型任务中出现的副产品</p>
+<p>词向量最基础的表达方式有哪2个?<br />独立编码(one-hot编码)<br />TF-IDF</p>
+<p>"主动学习被动学习"的独热编码结果是什么?<br />8*8的矩阵<br />[[1 0 0 0 0]<br /> [0 0 1 0 0]<br /> [0 0 0 1 0]<br /> [0 1 0 0 0]<br /> [0 0 0 0 1]<br /> [0 0 1 0 0]<br /> [0 0 0 1 0]<br /> [0 1 0 0 0]]<br />[1 0 0 0 0] 表示 主</p>
+<p>使用jieba和sklearn将下面一句话分词后one-hot编码</p>
+<p>共有10000文章，有10篇文章出现过“非常”这个字，需要统计的文章有100个字，“非常”出现了5次，求这篇文档的tf-idf的分数<br />tf = 5/100=0.05<br />idf = log（10,000 / 10）= 3<br />0.05 * 3=0.15 <br />TF: 词频(Term Frequency) <br />IDF: 逆文本频率(Inverse Document Frequency)</p>
+<p>使用计算下面481676.txt文件中权重前10个的动词的TF-IDF<br />暂时无法在飞书文档外展示此内容</p>
+<p>专门用于实现词向量的模型可以分为哪两类?<br />词袋模型(BOW: Bag Of word)<br />词嵌入模型</p>
+<p>什么是BOW?<br />在one-hot的基础上将词出现的频率当作词向量的一种特征<br /><img alt="" src="../media/1687338191732-f09bf98b-914a-4428-9af9-f74e2ba00390.png" /></p>
+<p>BOW有哪些问题?<br />无法衡量词的重要性:BOW给了每个词同等的重要性, 出现频率高的副词对文章其实没有实质性影响,可以通过TF-IDF来解决<br />不能保留语义: 词与词之间相互独立<br />维度高和稀疏性: 10000个词, 就需要10000维的向量<br />eg: 二维只能表示两个词 [1, 0] [0, 1], 用向量表示彼此是垂直(正交)的, 所以说是独立的</p>
+<p>使用jieba和sklearn计算下面3个句子的BOW模型的词向量, 使用TF-IDF作为特征, 只显示前10个特征值<br />text1 = "It is going to rain tomorrow tomorrow"<br />text2 = "Tomorrow I am not going outside"<br />text3 = "I am going to watch the premiere"</p>
+<p>$什么是语义信息<br />一个词的上下文是什么<br />eg.语义信息是指词与词之间的顺序和语法结构<br />The cat chased the mouse.<br />The mouse chased the cat.<br />顺序: The cat 得在 chased 前面<br />语法结构: 得符合主语+谓语+宾语结构</p>
+<p>$什么是正交?<br />a·b=0<br />有两个向量 (a1, a2) (b1, b2)<br />a1b1 + a2b2 = 0<br />向量点积dot product 为0</p>
+<p>$点积和内积有什么区别?<br />没有区别<br />同一个概念</p>
+<p>如何解决词袋模型的2个问题<br />词嵌入<br />不能保留语义: 两个词语义越相关, 向量距离越相近<br />维度高和稀疏性: 将每个高低维向量空间的单词映射成一个个低维向量空间中的向量</p>
+<p>如何比较向量之间的距离?<br />余弦相似度（Cosine Similarity)<br />cos(a,b) = (a·b) / (||a|| * ||b||)<br /><span class="arithmatex">\(<span class="arithmatex">\(\operatorname{cos}(a,b) = \frac{a\cdot b}{|a||b|}\)</span>\)</span></p>
+<p>什么情况下距离最小(语义最相关), 最大(语义最无关)?<br />最小: 正交(夹角为90度) = 0 (距离不能为负数)<br />最大: 重合(夹角为0度) = 1<br />cos90 = 0<br />注:<br />分母一般大于分子</p>
+<p><a name="DiijW"></a></p>
+<h2 id="_4">词嵌入模型<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p><a name="mkdD2"></a></p>
+<h3 id="word2voc">Word2Voc<a class="headerlink" href="#word2voc" title="Permanent link">&para;</a></h3>
+<p>word2vec的两种训练方法是什么? 训练中使用了那两种训练技巧?<br />CBOW(continuous Bag of Word 词袋模型): 通过背景词预测中心词来训练词向量<br />skip-gram(跳字模型): 通过中心词预测背景词来训练词向量<br />Negative Sampling(负采样): 如何选择训练样本<br />Hierarchical Softmax(层序Softmax): 如何加速训练过程</p>
+<p>CBOW 和 skip-gram 模型的区别和优缺点是什么?<br />CBOW: 训练速度更快, 在较小的数据集上表现较差<br />skip-gram: : 训练速度更慢, 在较小的数据集上表现较好</p>
+<p>以下列句子为例手写一个skip-gram的编码流程?<br />sentences = ["jack", "like", "dog" "jack" "like" "cat" "animal",...]<br /><img alt="" src="../media/1687338191709-1ab3c342-4e8a-4bc7-8ec9-4437590b9704.png" /></p>
+<p>通过下列 sentencens 训练一个简易的 skip-gram 模型, 并绘制相似度二维向量图<br />eg: jack ['like', 'movie', 'cat']<br />sentences = ["jack like dog", "jack like cat", "jack like animal",<br /> "dog cat animal", "banana apple cat dog like", "dog fish milk like",<br /> "dog cat animal like", "jack like apple", "apple like", "jack like banana",<br /> "apple banana jack movie book music like", "cat dog hate", "cat dog like"]<br /><img alt="" src="../media/1687338191812-9f040af4-c7c4-4845-b887-2994f9d51c05.png" /></p>
+<p>为什么要进行正负采样?<br />正采样: 让模型学习到相似词的语义信息和上下文信息<br />负采样: 让模型学习到不同词之间的区别</p>
+<p>什么是负采样?<br />随机选择一些噪声词来替代真实的上下文词，从而将原来的多分类问题转化为二分类问题，使得训练更加高效。</p>
+<p>处理附件 text8.train.txt 中的数据, 使用负采样训练 一个 skip-gram 模型, 预测 ["two", "america", "computer"] 语义最相近的8个词?<br />eg: two ['two', 'one', '<UNK>', 'and', 'six', 'for', 'is', 'zero', 'four', 's']</p>
+<p>回顾softmax?<br />$$ \sigma(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}},\quad i=1,2,\dots,K $$</p>
+<p>为什么需要层序softmax?<br />softmax层中有大量的神经元，每个神经元都需要计算指数函数，因此计算量很大, 层序softmax就是用于解决这一问题</p>
+<p>层序softmax是如何减小时间和空间复杂度的?<br />将词汇表中的单词划分成一个二叉树的形式，每个单词对应于树上的一个叶子节点。然后，我们可以使用树上的路径来表示每个单词，并将路径上的每个节点作为一个分类器的输出。这样，我们就可以将softmax层中的神经元数从|V|减少到log|V|，从而大大减少了计算和存储的负担。<br /><span class="arithmatex">\(<span class="arithmatex">\(P(w_i | w_{i-1}, w_{i-2}, \ldots, w_1) = \prod_{j=1}^{L(w_i)-1} \sigma(\text{node}_j)\)</span>\)</span></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      沈超凡 CC-BY-4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://space.bilibili.com/1352921332" target="_blank" rel="noopener" title="Bilibili | jarrycf" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/jarrycf" target="_blank" rel="noopener" title="GitHub | jarrycf" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../../../mkdocs/javascripts/mathjax.js"></script>
+        
+      
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+      
+        
+          <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+      
+    
+  </body>
+</html>
